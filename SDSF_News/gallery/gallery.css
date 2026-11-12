@@ -1,0 +1,528 @@
+/* ==========================================================================
+   SDSF NEWS - GALLERY VIEW IN FEATURED COLUMN
+   ========================================================================== */
+.col-gallery-middle {
+    min-height: 650px;
+    border-right: 1px solid #e2e8f0;
+    padding-right: 20px;
+}
+
+/* Banner bar */
+.gallery-banner-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #2563eb;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+}
+
+.gallery-banner-icon {
+    font-size: 1.25rem;
+    color: #2563eb;
+    flex-shrink: 0;
+}
+
+.gallery-banner-text {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 0.84rem;
+    color: #475569;
+    line-height: 1.45;
+}
+
+.gallery-banner-text strong {
+    color: #0f172a;
+}
+
+/* Boxes Container */
+.gallery-boxes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Individual Gallery Card Box */
+.gallery-box-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.gallery-box-card:hover {
+    transform: translateY(-4px);
+    border-color: #93c5fd;
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.12);
+}
+
+.gallery-box-card.featured-box {
+    border: 2px solid rgba(37, 99, 235, 0.3);
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+}
+
+.gallery-box-card.featured-box:hover {
+    border-color: #2563eb;
+    box-shadow: 0 14px 35px rgba(37, 99, 235, 0.18);
+}
+
+/* Image Container */
+/* For Orange Tech */
+.gallery-box-img-wrap-Orange-tech {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.gallery-box-img-wrap-Orange-tech img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+/* For Orange Tech */
+
+.gallery-box-card:hover .gallery-box-img-wrap img {
+    transform: scale(1.05);
+}
+
+.gallery-box-img-wrap.dark-bg {
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.gallery-box-img-wrap.dark-bg img {
+    object-fit: contain;
+    max-height: 120px;
+}
+
+/* Overlay Badge on Image */
+.gallery-box-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    letter-spacing: 0.3px;
+}
+
+/* Content Body */
+.gallery-box-body {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.gallery-box-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.gallery-box-date {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.gallery-box-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #2563eb;
+    background: #eff6ff;
+    padding: 2px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.4px;
+}
+
+.gallery-box-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.35;
+    margin: 0 0 6px 0;
+    transition: color 0.2s ease;
+}
+
+.gallery-box-card:hover .gallery-box-title {
+    color: #1e40af;
+}
+
+.gallery-box-desc {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 0.82rem;
+    color: #475569;
+    line-height: 1.48;
+    margin: 0 0 12px 0;
+}
+
+.gallery-box-footer {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 6px;
+}
+
+.gallery-box-action {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #2563eb;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.gallery-box-action i {
+    transition: transform 0.2s ease;
+}
+
+.gallery-box-card:hover .gallery-box-action {
+    color: #1d4ed8;
+}
+
+.gallery-box-card:hover .gallery-box-action i {
+    transform: translateX(5px);
+}
+
+/* Brochure Box Accent Styles */
+.gallery-box-card.brochure-box {
+    border: 2px solid rgba(220, 38, 38, 0.25);
+    background: linear-gradient(180deg, #ffffff 0%, #fffbfb 100%);
+}
+
+.gallery-box-card.brochure-box:hover {
+    border-color: #dc2626;
+    box-shadow: 0 14px 35px rgba(220, 38, 38, 0.16);
+}
+
+.badge-brochure {
+    background: rgba(185, 28, 28, 0.9) !important;
+}
+
+.tag-brochure {
+    background: #fef2f2 !important;
+    color: #dc2626 !important;
+}
+
+.action-brochure {
+    color: #dc2626 !important;
+}
+
+.gallery-box-card:hover .action-brochure {
+    color: #991b1b !important;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .gallery-box-card {
+        grid-template-columns: 1fr;
+    }
+    .gallery-box-img-wrap-Orange-tech {
+        height: 180px;
+    }
+    .col-gallery-middle {
+        padding-right: 0;
+        border-right: none;
+    }
+}
+
+/* ==========================================================================
+   Ganesh Chaturthi 2026 - Festive Album & Photo Grid
+   ========================================================================== */
+.gallery-box-card.ganesh-chaturthi-box {
+    border: 2px solid rgba(234, 88, 12, 0.4);
+    background: linear-gradient(180deg, #ffffff 0%, #fffbf7 100%);
+}
+
+.gallery-box-card.ganesh-chaturthi-box:hover {
+    border-color: #ea580c;
+    box-shadow: 0 14px 35px rgba(234, 88, 12, 0.18);
+}
+
+.badge-festive-album {
+    background: linear-gradient(135deg, #b45309 0%, #ea580c 100%) !important;
+}
+
+.tag-festive {
+    background: #fff7ed !important;
+    color: #ea580c !important;
+}
+
+.action-festive {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #ea580c !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 0.82rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.action-festive:hover {
+    color: #c2410c !important;
+}
+
+/* Ganesh Photos Grid */
+.ganesh-photos-grid-wrapper {
+    background: #ffffff;
+    border: 1px solid #fed7aa;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.08);
+}
+
+.ganesh-grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #ffedd5;
+    padding-bottom: 8px;
+}
+
+.ganesh-grid-header h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.05rem;
+    color: #9a3412;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ganesh-grid-header .grid-subtext {
+    font-size: 0.75rem;
+    color: #78716c;
+    font-family: 'Poppins', sans-serif;
+}
+
+.ganesh-grid-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.ganesh-grid-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 140px;
+    cursor: pointer;
+    background: #f5f5f4;
+    border: 1px solid #e7e5e4;
+    transition: all 0.25s ease;
+}
+
+.ganesh-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.ganesh-grid-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    border-color: #ea580c;
+}
+
+.ganesh-grid-item:hover img {
+    transform: scale(1.06);
+}
+
+.photo-overlay-hover {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    font-size: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.ganesh-grid-item:hover .photo-overlay-hover {
+    opacity: 1;
+}
+
+/* SDSF Induction Aagaaz 26 album */
+.gallery-box-card.induction-aagaaz-box {
+    border: 2px solid rgba(67, 97, 238, 0.35);
+    background: linear-gradient(180deg, #ffffff 0%, #f7f8ff 100%);
+}
+
+.gallery-box-card.induction-aagaaz-box:hover {
+    border-color: #4361ee;
+    box-shadow: 0 14px 35px rgba(67, 97, 238, 0.16);
+}
+
+.badge-induction-album {
+    background: linear-gradient(135deg, #3346b8 0%, #4361ee 100%) !important;
+}
+
+.tag-induction {
+    background: #eef2ff !important;
+    color: #4361ee !important;
+}
+
+.action-induction,
+.induction-more-photos-link {
+    color: #4361ee !important;
+}
+
+.induction-photos-grid-wrapper {
+    background: #ffffff;
+    border: 1px solid #c7d2fe;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 14px rgba(67, 97, 238, 0.08);
+}
+
+.induction-photos-grid-wrapper .ganesh-grid-header {
+    border-bottom-color: #e0e7ff;
+}
+
+.induction-photos-grid-wrapper .ganesh-grid-header h4 {
+    color: #3346b8;
+}
+
+.induction-photos-grid-wrapper .ganesh-grid-item:hover {
+    border-color: #4361ee;
+}
+
+.induction-more-photos-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.induction-empty-note {
+    margin: 0;
+    color: #64748b;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82rem;
+}
+
+/* Photo Lightbox Popup */
+.gallery-lightbox-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.9);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    animation: fadeInLightbox 0.25s ease;
+}
+
+@keyframes fadeInLightbox {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.gallery-lightbox-container {
+    position: relative;
+    max-width: 900px;
+    max-height: 90vh;
+    background: #0f172a;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-lightbox-img {
+    max-width: 100%;
+    max-height: 78vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.gallery-lightbox-caption {
+    padding: 12px 20px;
+    background: #0b132b;
+    color: #f1f5f9;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gallery-lightbox-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    z-index: 10;
+}
+
+.gallery-lightbox-close:hover {
+    background: #ea580c;
+}
+

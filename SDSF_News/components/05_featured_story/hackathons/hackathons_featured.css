@@ -1,0 +1,67 @@
+/* ==========================================================================
+   FEATURED VIEW - HACKATHONS
+   ========================================================================== */
+#featured-view-hackathon {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: featuredFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-view-header.hackathon-accent {
+    border-color: #f59e0b;
+}
+
+.category-view-pill.hackathon-pill {
+    color: #d97706;
+    background: #fffbeb;
+}
+
+.lead-category-badge.hackathon-badge {
+    background: #d97706;
+}
+
+.hackhive-media-wrap {
+    background: #0b0f19;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hackhive-img {
+    max-height: 280px;
+    object-fit: contain !important;
+    padding: 1.5rem;
+}
+
+.hackathon-tracks-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin: 16px 0;
+}
+
+.track-tag {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #92400e;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.track-tag i {
+    color: #d97706;
+}
+
+.btn-hackathon-cta {
+    background: linear-gradient(135deg, #d97706, #f59e0b) !important;
+}
+
+.btn-hackathon-cta:hover {
+    background: linear-gradient(135deg, #b45309, #d97706) !important;
+}

@@ -1,0 +1,791 @@
+/* ==========================================================================
+   SDSF ACADEMICS PAGE STYLESHEET (css/academics.css) - READABLE & MODERN
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #1e293b;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* ==========================================================================
+   Hero Section (Full-Width Spread)
+   ========================================================================== */
+.academics-hero-box {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 32px 0;
+    border-radius: 0;
+    padding: 4rem 1.5rem;
+    overflow: hidden;
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px;
+    background-color: #0b132b;
+}
+
+.academics-hero-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.academics-hero-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(11, 19, 43, 0.84) 0%, rgba(22, 43, 87, 0.78) 50%, rgba(18, 27, 56, 0.86) 100%);
+    z-index: 2;
+}
+
+.academics-hero-box .hero-text-content {
+    position: relative;
+    z-index: 3;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(8px);
+    color: #fef08a;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+}
+
+.academics-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    font-weight: 500;
+    color: #f2b300;
+    margin-bottom: 0.75rem;
+    max-width: 760px;
+    line-height: 1.4;
+}
+
+.hero-intro-text {
+    font-size: 1rem;
+    color: #e2e8f0;
+    max-width: 720px;
+    margin: 0 auto 1.4rem;
+    line-height: 1.65;
+    font-weight: 300;
+}
+
+.hero-stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.stat-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(18, 27, 56, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(6px);
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.stat-pill i {
+    color: #f2b300;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Content Container & Options Grid (Wide & Balanced)
+   ========================================================================== */
+.content-container {
+    width: 94%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 10px 50px;
+}
+
+.academic-options-section {
+    padding: 10px 0 35px;
+}
+
+.academic-options-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.option-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2.2rem 1.8rem 1.6rem;
+    text-align: center;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.option-card:hover {
+    transform: translateY(-4px);
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 25px rgba(22, 43, 87, 0.08);
+}
+
+.card-icon {
+    font-size: 2.3rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.option-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 8px;
+    line-height: 1.35;
+    text-align: center;
+}
+
+.option-card p {
+    color: #64748b;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 18px;
+    text-align: center;
+    flex: 1;
+}
+
+.card-link {
+    color: #4361ee;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+}
+
+.card-link:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Hidden Detail Boxes (Ordinances, Calendars, Student Lists)
+   ========================================================================== */
+.ordinances-box {
+    grid-column: 1 / -1;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.8rem 2.2rem;
+    margin: 18px 0;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.05);
+}
+
+.ordinances-box .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #162b57;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.styled-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.styled-list li {
+    padding: 12px 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #334155;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: all 0.2s ease;
+}
+
+.styled-list li:hover {
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 4px 14px rgba(22, 43, 87, 0.07);
+}
+
+.styled-list a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.styled-list a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Meet Our Faculty Section
+   ========================================================================== */
+.faculty-wrapper {
+    margin: 40px 0;
+}
+
+.faculty-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.title-underline {
+    width: 48px;
+    height: 3.5px;
+    background: #22c55e;
+    border-radius: 2px;
+    margin: 0 auto 30px;
+}
+
+.faculty-section {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* ==========================================================================
+   Faculty Spotlight Card (HOD / Desk Card Layout)
+   ========================================================================== */
+.faculty-spotlight-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 24px 32px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 920px;
+    margin: 0 auto 12px;
+    transition: box-shadow 0.25s ease;
+}
+
+.faculty-spotlight-card:hover {
+    box-shadow: 0 12px 32px rgba(22, 43, 87, 0.08);
+}
+
+/* Left Visual Column */
+.spotlight-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 12px 16px 12px;
+    min-height: 250px;
+}
+
+.spotlight-dots {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 90px;
+    height: 90px;
+    background-image: radial-gradient(#94a3b8 2px, transparent 2px);
+    background-size: 11px 11px;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.spotlight-backdrop {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    width: 105px;
+    height: 155px;
+    background-color: #2563eb;
+    border-radius: 16px;
+    z-index: 1;
+}
+
+.spotlight-photo-frame {
+    position: relative;
+    z-index: 2;
+    width: 175px;
+    height: 228px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.14);
+    background: #f8fafc;
+}
+
+.spotlight-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
+
+
+/* Right Content Column */
+.spotlight-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.spotlight-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #475569;
+    font-size: 0.86rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 4px;
+}
+
+.spotlight-eyebrow i {
+    font-size: 0.98rem;
+    color: #2563eb;
+}
+
+.spotlight-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.68rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.3px;
+}
+
+.spotlight-heading .head-dark {
+    color: #1e3a68;
+}
+
+.spotlight-heading .head-gold {
+    color: #2563eb;
+}
+
+.spotlight-message p {
+    font-size: 0.88rem;
+    line-height: 1.58;
+    color: #334155;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.spotlight-message p:last-child {
+    margin-bottom: 0;
+}
+
+.spotlight-footer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.spotlight-footer .faculty-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: #162b57;
+    margin-bottom: 2px;
+}
+
+.spotlight-footer .faculty-role {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 6px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.spotlight-footer .faculty-contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    color: #475569;
+    font-family: 'Poppins', sans-serif;
+}
+
+.spotlight-footer .contact-entry {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.spotlight-footer .contact-entry i {
+    color: #64748b;
+    font-size: 0.8rem;
+}
+
+.spotlight-footer .contact-entry a {
+    color: #1d4ed8;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.spotlight-footer .contact-entry a:hover {
+    text-decoration: underline;
+    color: #1e3a68;
+}
+
+.spotlight-footer .contact-divider {
+    color: #cbd5e1;
+}
+
+
+
+/* ==========================================================================
+   Non-Teaching, Visiting Faculty & Important Documents
+   ========================================================================== */
+.non-teaching, .visiting-faculty {
+    margin: 32px 0;
+}
+
+.non-teaching-heading, .visiting-heading {
+    background: #162b57 !important;
+    border-left: 5px solid #f2b300 !important;
+    color: #ffffff !important;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    font-family: 'Oswald', sans-serif !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    margin-bottom: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    line-height: 1.3 !important;
+}
+
+.non-teaching-heading *, .visiting-heading * {
+    color: #ffffff !important;
+}
+
+.non-teaching-heading i, .visiting-heading i {
+    color: #f2b300 !important;
+}
+
+.notice-list {
+    background: #ffffff;
+    padding: 16px 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notice-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.notice-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(22, 43, 87, 0.08);
+    border-color: #2563eb;
+    background: #ffffff;
+}
+
+.notice-text {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.notice-text a {
+    font-size: 0.95rem;
+    color: #1e293b;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.5;
+    transition: color 0.2s ease;
+    text-align: left;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.notice-item:hover .notice-text a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   Timetable Section
+   ========================================================================== */
+.time-table {
+    width: 100%;
+    margin: 32px 0;
+    position: relative;
+    overflow: visible;
+    z-index: 0;
+}
+
+.time-table-heading {
+    background: #162b57;
+    border-left: 5px solid #f2b300;
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.time-table-list {
+    background: #ffffff;
+    padding: 16px 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.timetable-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    gap: 14px;
+    transition: all 0.2s ease;
+}
+
+.timetable-item:hover {
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 4px 14px rgba(22, 43, 87, 0.06);
+}
+
+.timetable-details h3 {
+    font-size: 1rem;
+    color: #162b57;
+    font-weight: 600;
+    margin: 0 0 2px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.timetable-meta {
+    font-size: 0.82rem;
+    color: #64748b;
+}
+
+.timetable-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #2563eb;
+    color: white;
+    padding: 7px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.timetable-btn:hover {
+    background-color: #1d4ed8;
+    color: white;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 992px) {
+    .faculty-spotlight-card {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 24px 20px;
+    }
+
+    .spotlight-visual {
+        margin: 0 auto;
+        min-height: auto;
+    }
+
+    .spotlight-heading {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .academics-hero-box {
+        padding: 3rem 1.2rem;
+        min-height: auto;
+        margin-bottom: 24px;
+    }
+
+    .content-container {
+        padding: 0 14px 35px;
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timetable-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 576px) {
+    .faculty-spotlight-card {
+        padding: 18px 14px;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .spotlight-visual {
+        padding: 8px 8px 12px 8px;
+    }
+
+    .spotlight-photo-frame {
+        width: 150px;
+        height: 195px;
+    }
+
+    .spotlight-backdrop {
+        width: 90px;
+        height: 130px;
+    }
+
+    .spotlight-dots {
+        width: 70px;
+        height: 70px;
+    }
+
+
+
+    .spotlight-eyebrow {
+        justify-content: center;
+    }
+
+    .spotlight-heading {
+        font-size: 1.35rem;
+    }
+
+    .spotlight-footer .faculty-contact-row {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .spotlight-footer .contact-divider {
+        display: none;
+    }
+}

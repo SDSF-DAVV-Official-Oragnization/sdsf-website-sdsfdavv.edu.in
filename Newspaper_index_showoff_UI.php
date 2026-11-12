@@ -1,0 +1,1787 @@
+<?php
+/**
+ * Newspaper_index_showoff_UI.php
+ * Dynamic newspaper showcase component rendered on index.php
+ * Displays the authentic live front fold of SDSF CHRONICLE with interactive hover/click prompt.
+ */
+$news_dir = 'SDSF_News/';
+
+// Dynamic covers for Induction 2026 & Certif Appre
+$induction_dir = __DIR__ . '/photoes/Induction 2026';
+$induction_cover = 'photoes/Induction%202026/IMG-20260918-WA0007.jpg';
+if (file_exists($induction_dir . '/IMG-20260918-WA0007.jpg')) {
+  $induction_cover = 'photoes/Induction%202026/IMG-20260918-WA0007.jpg';
+} elseif (file_exists($induction_dir . '/IMG_6745.jpg')) {
+  $induction_cover = 'photoes/Induction%202026/IMG_6745.jpg';
+} else {
+  $induction_cover = $news_dir . 'photoes_news/slide_image_event.jpeg';
+}
+
+$certif_dir = __DIR__ . '/photoes/Induction 2026/Certif Appre';
+$certif_cover = 'photoes/Induction%202026/Certif%20Appre/IMG_6731.jpg';
+if (file_exists($certif_dir . '/IMG_6731.jpg')) {
+  $certif_cover = 'photoes/Induction%202026/Certif%20Appre/IMG_6731.jpg';
+} elseif (file_exists($certif_dir . '/IMG_6732.jpg')) {
+  $certif_cover = 'photoes/Induction%202026/Certif%20Appre/IMG_6732.jpg';
+} else {
+  $certif_cover = $news_dir . 'photoes_news/slide_image_event.jpeg';
+}
+?>
+
+<div class="nexus-showcase-container" id="nexusShowcaseContainer">
+
+  <div class="newspaper-wrapper nexus-preview-paper">
+    
+    <!-- 1. Top Utility Bar -->
+    <div class="news-topbar">
+      <div class="news-topbar-inner">
+        <div class="topbar-left">
+          <span class="topbar-date">
+            <i class="far fa-calendar-alt"></i> <span id="nexusShowcaseDate">Wednesday, September 17, 2026</span>
+          </span>
+          <span class="topbar-divider">|</span>
+          <span class="topbar-location">
+            <i class="fas fa-map-marker-alt"></i> Takshila Campus, Indore, MP, India
+          </span>
+        </div>
+        <div class="topbar-right">
+          <span class="live-edition-badge">
+            <span class="live-dot"></span> DAILY EDITION
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Newspaper Masthead -->
+    <header class="news-masthead">
+      <div class="masthead-inner">
+        <div class="masthead-left">
+          <div class="masthead-time-widget">
+            <span class="time-day" id="nexusShowcaseDay">Thursday</span>
+            <span class="time-clock" id="nexusShowcaseClock">22:35:00</span>
+            <span class="time-meta">CAMPUS LOCAL TIME</span>
+          </div>
+        </div>
+
+        <div class="masthead-center">
+          <div class="masthead-pretitle">DEVI AHILYA VISHWAVIDYALAYA &bull; SCHOOL OF DATA SCIENCE &amp; FORECASTING</div>
+          <h1 class="masthead-title">
+            <a href="<?php echo $news_dir; ?>news.php">SDSF CHRONICLE</a>
+          </h1>
+          <div class="masthead-sub-banner">
+            <span>&copy; SDSF - All Rights Reserved.</span>
+            <span class="sub-sep">|</span>
+            <span><i class="fas fa-globe-americas"></i> Your Trusted Source for SDSF News</span>
+            <span class="sub-sep">|</span>
+            <span><i class="fas fa-camera-retro"></i> Capturing the Spirit of Data &amp; Innovation</span>
+          </div>
+        </div>
+
+        <div class="masthead-right">
+          <div class="edition-meta-box">
+            <span class="meta-issue">Vol. III &bull; Issued on 02/11/26</span>
+            <span class="meta-circ">Takshila Academic Press</span>
+          </div>
+
+            <!-- Notification Bell -->
+            <div class="notif-bell-wrap" id="notifBellWrap">
+                <button class="notif-bell-btn" id="notifBellBtn" onclick="toggleNotifPanel(event)" aria-label="Notifications" title="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notif-badge" id="notifBadge">3</span>
+                </button>
+                <div class="notif-panel" id="notifPanel" style="display:none;">
+                    <div class="notif-panel-header">
+                        <span><i class="fas fa-bell"></i> Recent Updates</span>
+                        <button class="notif-panel-close" onclick="closeNotifPanel()" aria-label="Close">&times;</button>
+                    </div>
+                    <ul class="notif-list">
+                        <li class="notif-item notif-unread" onclick="window.location.href='academics.php#exam-timetable'">
+                            <span class="notif-dot notif-dot-blue" style="background: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);"></span>
+                            <div class="notif-item-body">
+                                <span class="notif-item-title">Final Examination Time Table updated</span>
+                                <span class="notif-item-sub">Academic Year 2026–27 schedule &bull; Stay tuned for updates</span>
+                            </div>
+                            <i class="fas fa-chevron-right notif-arrow"></i>
+                        </li>
+                        <li class="notif-item notif-unread" onclick="onCyberEthicsNotifClick()">
+                            <span class="notif-dot notif-dot-green"></span>
+                            <div class="notif-item-body">
+                                <span class="notif-item-title">Workshop Conducted: Cyber Security &amp; Internet Ethics</span>
+                                <span class="notif-item-sub">Malaviya Mission Teacher Training Centre (UGC-HRDC), DAVV &bull; 26&ndash;31 Oct 2026</span>
+                            </div>
+                            <i class="fas fa-chevron-right notif-arrow"></i>
+                        </li>
+                        <li class="notif-item notif-unread" onclick="onNotifClick()">
+                            <span class="notif-dot"></span>
+                            <div class="notif-item-body">
+                                <span class="notif-item-title">Monthly Website Updates</span>
+                                <span class="notif-item-sub">Submit your projects &amp; achievements anytime</span>
+                            </div>
+                            <i class="fas fa-chevron-right notif-arrow"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </div>
+    </header>
+
+        <style>
+        /* ── Masthead Right Flex Alignment ── */
+        .masthead-right {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-end !important;
+            gap: 16px !important;
+        }
+
+        /* ── Notification Bell ── */
+        .notif-bell-wrap {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        .notif-bell-btn {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #1e293b;
+            font-size: 1.05rem;
+            position: relative;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+            padding: 0;
+            outline: none;
+        }
+        .notif-bell-btn:hover {
+            background: #eff6ff;
+            color: #2563eb;
+            border-color: #93c5fd;
+            transform: scale(1.05);
+        }
+        .notif-badge {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            background: #dc2626;
+            color: #ffffff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            border-radius: 50%;
+            width: 17px;
+            height: 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ffffff;
+            pointer-events: none;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+            line-height: 1;
+        }
+        .notif-badge[data-count="0"],
+        .notif-badge.notif-badge-hidden {
+            display: none !important;
+        }
+        .notif-panel {
+            position: absolute;
+            top: calc(100% + 12px);
+            right: 0;
+            width: 320px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.08);
+            z-index: 999999;
+            overflow: hidden;
+            border: 1px solid #cbd5e1;
+            text-align: left;
+            animation: notifFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes notifFadeIn {
+            from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .notif-panel-header {
+            background: #0f172a;
+            color: #f1f5f9;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .notif-panel-header i {
+            margin-right: 6px;
+            color: #fbbf24;
+        }
+        .notif-panel-close {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0 2px;
+            line-height: 1;
+            transition: color 0.15s;
+        }
+        .notif-panel-close:hover {
+            color: #ef4444;
+        }
+        .notif-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .notif-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #f1f5f9;
+            transition: background 0.15s;
+            text-align: left;
+        }
+        .notif-item:last-child {
+            border-bottom: none;
+        }
+        .notif-item:hover {
+            background: #f8fafc;
+        }
+        .notif-item.notif-unread {
+            background: #eff6ff;
+        }
+        .notif-item.notif-unread:hover {
+            background: #dbeafe;
+        }
+        .notif-dot {
+            width: 9px;
+            height: 9px;
+            background: #2563eb;
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        .notif-dot-green {
+            background: #10b981 !important;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3) !important;
+        }
+        .notif-item-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            text-align: left;
+        }
+        .notif-item-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.3;
+        }
+        .notif-item-sub {
+            font-size: 0.76rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+        .notif-arrow {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            transition: transform 0.15s;
+        }
+        .notif-item:hover .notif-arrow {
+            transform: translateX(3px);
+            color: #2563eb;
+        }
+        @media (max-width: 820px) {
+            .masthead-right {
+                justify-content: center !important;
+                margin-top: 8px;
+            }
+            .notif-panel {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            @keyframes notifFadeIn {
+                from { opacity: 0; transform: translate(-50%, -8px) scale(0.98); }
+                to   { opacity: 1; transform: translate(-50%, 0) scale(1); }
+            }
+        }
+    </style>
+
+        <script>
+        (function() {
+            var STORAGE_KEY = 'sdsf_web_updates_notif_read_v1';
+
+            function isNotifRead() {
+                try {
+                    return localStorage.getItem(STORAGE_KEY) === 'true';
+                } catch (e) {
+                    return false;
+                }
+            }
+
+            function setNotifRead() {
+                try {
+                    localStorage.setItem(STORAGE_KEY, 'true');
+                } catch (e) {}
+            }
+
+            function applyReadState() {
+                // Notifications always have a sign active at all times
+                var badge = document.getElementById('notifBadge');
+                if (badge) badge.classList.remove('notif-badge-hidden');
+            }
+
+            function toggleNotifPanel(e) {
+                if (e) e.stopPropagation();
+                var panel = document.getElementById('notifPanel');
+                if (!panel) return;
+                var isOpen = panel.style.display !== 'none';
+                panel.style.display = isOpen ? 'none' : 'block';
+            }
+
+            function closeNotifPanel() {
+                var panel = document.getElementById('notifPanel');
+                if (panel) panel.style.display = 'none';
+            }
+
+            function onNotifClick() {
+                closeNotifPanel();
+                // Mark as read in localStorage and update DOM
+                setNotifRead();
+                applyReadState();
+
+                // Open the Monthly Website Updates modal
+                if (window.openWebUpdatesModal) {
+                    window.openWebUpdatesModal();
+                } else {
+                    var modal = document.getElementById('webUpdatesModal');
+                    if (modal) {
+                        modal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+            }
+
+            // Apply immediately on load
+            applyReadState();
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', applyReadState);
+            }
+
+            // Sync across tabs/windows
+            window.addEventListener('storage', function(e) {
+                if (e.key === STORAGE_KEY && e.newValue === 'true') {
+                    applyReadState();
+                }
+            });
+
+            // Close panel on outside click
+            document.addEventListener('click', function(e) {
+                var wrap = document.getElementById('notifBellWrap');
+                if (wrap && !wrap.contains(e.target)) {
+                    var panel = document.getElementById('notifPanel');
+                    if (panel) panel.style.display = 'none';
+                }
+            });
+
+            // Export functions
+            window.toggleNotifPanel = toggleNotifPanel;
+            window.closeNotifPanel = closeNotifPanel;
+            window.onNotifClick = onNotifClick;
+            function onCyberEthicsNotifClick() {
+                closeNotifPanel();
+                var el = document.getElementById('article-cyber-ethics');
+                if (el) {
+                    el.scrollIntoView({behavior: 'smooth', block: 'start'});
+                } else {
+                    window.location.href = previewStoryCard ? previewStoryCard.dataset.chronicleHref : 'SDSF_News/news.php';
+                }
+            }
+            window.onCyberEthicsNotifClick = onCyberEthicsNotifClick;
+
+            window.markNotifWebUpdatesRead = function() {
+                setNotifRead();
+                applyReadState();
+            };
+        })();
+    </script>
+
+    <!-- 3. Editorial Category Navigation Bar -->
+    <nav class="editorial-navbar">
+      <div class="nav-content-row">
+        <ul class="nav-links-list">
+          <li class="active"><a href="<?php echo $news_dir; ?>news.php"><i class="fas fa-home"></i> HOME</a></li>
+          <li><a href="<?php echo $news_dir; ?>news.php?view=notices"><i class="fas fa-newspaper"></i> NOTICES</a></li>
+          <li class="has-sub">
+            <a href="<?php echo $news_dir; ?>news.php">
+              NEWS <i class="fas fa-angle-down"></i>
+            </a>
+            <ul class="sub-dropdown">
+              <li><a href="<?php echo $news_dir; ?>news.php?category=hackathon">Hackathons &amp; Events</a></li>
+              <li><a href="<?php echo $news_dir; ?>news.php?category=campus">Campus &amp; Culture</a></li>
+              <li><a href="<?php echo $news_dir; ?>news.php?category=pace">PACE Series</a></li>
+            </ul>
+          </li>
+          <li><a href="<?php echo $news_dir; ?>news.php?category=hackathon">HACKATHONS</a></li>
+          <li><a href="<?php echo $news_dir; ?>news.php?category=campus">CAMPUS LIFE</a></li>
+          <li><a href="<?php echo $news_dir; ?>news.php?view=gallery"><i class="fas fa-images"></i> GALLERY</a></li>
+          <li><a href="<?php echo $news_dir; ?>news.php?category=pace">PACE</a></li>
+          <li><a href="<?php echo $news_dir; ?>news.php?view=developer"><i class="fas fa-laptop-code"></i> DEV'S HUB</a></li>
+          <li><a href="<?php echo $news_dir; ?>news.php?view=print-media" class="print-media-nav-link"><i class="fas fa-newspaper"></i> NEWS &amp; PRINT MEDIA</a></li>
+        </ul>
+
+        <div class="nav-search-wrapper">
+          <form class="news-search-form" onsubmit="window.location.href='<?php echo $news_dir; ?>news.php'; return false;">
+            <input type="text" placeholder="Search headlines, articles..." autocomplete="off">
+            <button type="submit" aria-label="Search articles">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 4. Breaking News Ticker -->
+    <div class="breaking-news-ticker-bar">
+      <div class="ticker-inner">
+        <div class="ticker-badge">
+          <i class="fas fa-bell"></i> Recent Updates:
+        </div>
+        <div class="ticker-track-wrapper">
+          <div class="ticker-scroll-content">
+            <span class="ticker-item">
+              <a href="academics.php#exam-timetable">Final Examination Time Table updated</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="#article-cyber-ethics" onclick="var el=document.getElementById('article-cyber-ethics'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); return false;">Workshop Conducted: Cyber Security &amp; Internet Ethics</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="javascript:void(0)" onclick="if(window.openYashFootballModal){ window.openYashFootballModal(); } return false;">Yash Mathur Represents DAVV UTD at District Football Championship — Secures Runners-Up!</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="<?php echo $news_dir; ?>news.php">Welcome to the official SDSF E-News Portal for Updates and News</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="<?php echo $news_dir; ?>news.php">Orange Tech Placement Drive: A Resounding Success</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="<?php echo $news_dir; ?>news.php?view=gallery#inductionGalleryBox">SDSF Induction Aagaaz 26: Official Induction Ceremony &amp; Photo Gallery</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="<?php echo $news_dir; ?>news.php?category=hackathon">HackHive 2.0 unites developers, data engineers, designers, and innovators from universities an intensive 36-hour sprint.</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="<?php echo $news_dir; ?>news.php?category=pace">Encouraging Students with PACE ideas and project concepts to innovate for the future</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="<?php echo $news_dir; ?>news.php?category=all#trendingArticleRakutenPlacement">Two SDSF Students Selected at Rakuten Symphony Through Campus Hiring</a>
+            </span>
+            <!-- Duplicate loop for smooth ticker animation -->
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="academics.php#exam-timetable">Final Examination Time Table updated</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="#article-cyber-ethics" onclick="var el=document.getElementById('article-cyber-ethics'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); return false;">Workshop Conducted: Cyber Security &amp; Internet Ethics</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="javascript:void(0)" onclick="if(window.openYashFootballModal){ window.openYashFootballModal(); } return false;">Yash Mathur Represents DAVV UTD at District Football Championship — Secures Runners-Up!</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="<?php echo $news_dir; ?>news.php">Welcome to the official SDSF E-News Portal for Updates and News</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="<?php echo $news_dir; ?>news.php">Orange Tech Placement Drive: A Resounding Success</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="<?php echo $news_dir; ?>news.php?view=gallery#inductionGalleryBox">SDSF Induction Aagaaz 26: Official Induction Ceremony &amp; Photo Gallery</a>
+            </span>
+            <span class="ticker-sep">/</span>
+            <span class="ticker-item">
+              <a href="<?php echo $news_dir; ?>news.php?category=all#trendingArticleRakutenPlacement">Two SDSF Students Selected at Rakuten Symphony Through Campus Hiring</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Topics Filter Pills Row -->
+    <main class="news-main-container">
+      <div class="filter-pills-row">
+        <span class="filter-pills-label"><i class="fas fa-sliders-h"></i> Topics:</span>
+        <button class="pill-btn active" type="button" onclick="window.location.href='<?php echo $news_dir; ?>news.php';">All Stories</button>
+        <button class="pill-btn" type="button" onclick="window.location.href='<?php echo $news_dir; ?>news.php?category=hackathon';">Hackathons &amp; Tech</button>
+        <button class="pill-btn" type="button" onclick="window.location.href='<?php echo $news_dir; ?>news.php?category=campus';">Campus &amp; Culture</button>
+        <button class="pill-btn" type="button" onclick="window.location.href='<?php echo $news_dir; ?>news.php?category=pace';">PACE Series</button>
+        <button class="pill-btn pill-btn-aagaaz" id="pillBtnAagaaz26" type="button" onclick="window.location.href='<?php echo $news_dir; ?>news.php?view=gallery#inductionGalleryBox';">🎓 AAgaaz 26</button>
+        <button class="pill-btn pill-btn-visarjan" type="button" onclick="window.location.href='<?php echo $news_dir; ?>news.php?category=all#article-visarjan';">🌺 Ganesh Visarjan</button>
+      </div>
+
+      <!-- 6. 3-Column Top Stories Grid -->
+      <div class="newspaper-grid">
+        
+        <!-- Column 1: Latest News -->
+        <aside class="grid-col col-latest">
+          <div class="col-section-header">
+            <h2 class="col-heading">Latest News</h2>
+            <span class="col-header-line"></span>
+          </div>
+
+          <!-- Workshop Conducted: Cyber Security & Internet Ethics (MMTTC DAVV) -->
+          <article class="news-card card-primary-col1" data-id="cyber_ethics" data-category="academic">
+            <div class="card-media">
+              <a href="<?php echo $news_dir; ?>news.php?category=all#article-cyber-ethics">
+                <img src="<?php echo $news_dir; ?>photoes_news/cyber_security_ethics_thumb.jpeg" alt="Workshop Conducted: Cyber security and Internet Ethics by MMTTC DAVV" loading="lazy">
+              </a>
+              <span class="card-badge badge-academic" style="background: #0284c7;"><i class="fas fa-shield-alt"></i> MMTTC DAVV</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="<?php echo $news_dir; ?>news.php?category=all#article-cyber-ethics">Workshop Conducted: Malaviya Mission Training Centre Holds Course in Cyber Security &amp; Internet Ethics</a>
+              </h3>
+              <p class="card-snippet">
+                Malaviya Mission Teacher Training Centre (Formerly UGC-HRDC), DAVV Indore successfully conducted an online Short Term Course from 26 to 31 Oct 2026.
+              </p>
+              <div class="card-meta">
+                <span><i class="far fa-clock"></i> Conducted: 26–31 Oct 2026</span>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- Yash Mathur: DAVV Football Team Runners-Up at District Level -->
+          <article class="news-card card-primary-col1" data-id="yash_football" data-category="campus" onclick="if(window.openYashFootballModal){ openYashFootballModal(); }" style="cursor: pointer;">
+            <div class="card-media">
+              <a href="javascript:void(0)" onclick="if(window.openYashFootballModal){ openYashFootballModal(); } return false;">
+                <img src="<?php echo $news_dir; ?>photoes_news/YashMathurFOOTBALL.jpeg" alt="Yash Mathur Represents DAVV at District Football Championship" loading="lazy" style="object-position: 50% 20% !important;">
+              </a>
+              <span class="card-badge badge-academic" style="background: #16a34a;"><i class="fas fa-futbol"></i> Sports</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="javascript:void(0)" onclick="if(window.openYashFootballModal){ openYashFootballModal(); } return false;">
+                  SDSF's Yash Mathur Clinches Runners-Up at District Men's Football Championship
+                </a>
+              </h3>
+              <p class="card-snippet">
+                Yash Mathur proudly represented the DAVV UTD Football Team at the District Level Men's Football Competition at Govt. College Rau, Indore, securing an outstanding Runners-Up finish.
+              </p>
+              <div class="card-meta">
+                <span><i class="far fa-clock"></i> 30 Oct 2026</span>
+              </div>
+            </div>
+          </article>
+          <!-- The Next Wave: GDG SDSF Core Team Recruitment -->
+          <article class="news-card card-primary-col1" data-id="gdg_recruitment" data-category="campus">
+            <div class="card-media">
+              <a href="<?php echo $news_dir; ?>news.php?category=all#article-gdg-recruitment">
+                <img src="<?php echo $news_dir; ?>photoes_news/GDG Team Recruitment 2026/1.jpeg" alt="The Next Wave: GDG SDSF Core Team Recruitment" loading="lazy">
+              </a>
+              <span class="card-badge badge-academic">GDG</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="<?php echo $news_dir; ?>news.php?category=all#article-gdg-recruitment">
+                  The Next Wave: GDG SDSF Core Team Recruitment
+                </a>
+              </h3>
+              <p class="card-snippet">
+                Join GDGoC SDSF for a community info session to learn about GDG, meet new organizers, and discover how to join the GDG SDSF Core Team.
+              </p>
+              <div class="card-meta">
+                <span><i class="far fa-clock"></i> 9 Oct 2026</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Ganesh Visarjan 2026 -->
+          <article class="news-card card-primary-col1" data-id="14" data-category="campus">
+            <div class="card-media">
+              <a href="<?php echo $news_dir; ?>news.php?category=all#article-visarjan">
+                <img src="<?php echo $news_dir; ?>photoes_news/Ganesh Visarjan 2026/visarjan-2026-05.jpeg" alt="Ganesh Visarjan 2026: SDSF Bids Bappa a Heartfelt Farewell" loading="lazy" style="object-position: 50% 65% !important;">
+              </a>
+              <span class="card-badge badge-academic">Visarjan</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="<?php echo $news_dir; ?>news.php?category=all#article-visarjan">
+                  Ganesh Visarjan 2026: SDSF Bids Bappa a Heartfelt Farewell
+                </a>
+              </h3>
+              <p class="card-snippet">
+                SDSF students bid farewell to Lord Ganesha on 25th September 2026 with aarti, havan and dance, as Bappa was taken around the entire campus.
+              </p>
+              <div class="card-meta">
+                <span><i class="far fa-clock"></i> 25 Sept 2026</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Lead Story 1 in Column 1 (Induction Aagaaz 26) -->
+          <article class="news-card card-primary-col1" data-id="13" data-category="campus">
+            <div class="card-media">
+              <a href="<?php echo $news_dir; ?>news.php?category=campus#campusAagaaz26">
+                <img src="<?php echo htmlspecialchars($induction_cover, ENT_QUOTES); ?>" alt="SDSF Induction Aagaaz 26" loading="lazy">
+              </a>
+              <span class="card-badge badge-academic">Induction</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="<?php echo $news_dir; ?>news.php?category=campus#campusAagaaz26">
+                  SDSF Induction Aagaaz 26 Welcomes the 2026 Batch
+                </a>
+              </h3>
+              <p class="card-snippet">
+                Aagaaz 26 gave the new batch a warm start with faculty interactions, shared campus moments, and an inspiring introduction to life at SDSF.
+              </p>
+              <div class="card-meta">
+                <span><i class="far fa-clock"></i> 17 Sept 2026</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Lead Story 2 in Column 1 (Orange Tech) -->
+          <article class="news-card card-primary-col1" data-id="1" data-category="home">
+            <div class="card-media">
+              <a href="<?php echo $news_dir; ?>news.php">
+                <img src="<?php echo $news_dir; ?>photoes_news/Orange_Tech.png" alt="SDSF Students Selected at Orange Data Tech" loading="lazy">
+              </a>
+              <span class="card-badge badge-academic">Placement</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="<?php echo $news_dir; ?>news.php">
+                  SDSF Students Selected at Orange Data Tech Through Campus Hiring Drive
+                </a>
+              </h3>
+              <p class="card-snippet">
+                The recruitment drive provided students with an excellent opportunity to demonstrate their analytical, technical, problem-solving, and communication skills. The selection process included multiple stages designed to assess the candidates' aptitude, technical knowledge, and suitability for the respective roles.
+              </p>
+              <div class="card-meta">
+                <span><i class="far fa-clock"></i> 2 Sept 2026</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Lead Story 3 in Column 1 (Culture Event) -->
+          <article class="news-card card-primary-col1" data-id="1" data-category="campus">
+            <div class="card-media">
+              <a href="<?php echo $news_dir; ?>news.php?category=campus">
+                <img src="<?php echo $news_dir; ?>photoes_news/slide_image_event.jpeg" alt="Academic Collaboration" loading="lazy">
+              </a>
+              <span class="card-badge badge-academic">Events</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="<?php echo $news_dir; ?>news.php?category=campus">
+                  Where Culture Comes Alive
+                </a>
+              </h3>
+              <p class="card-snippet">
+                A vibrant celebration of tradition, talent, and togetherness by the School of Data Science &amp; Forecasting at the Sfoorti DAVV.
+              </p>
+            </div>
+          </article>
+
+          <!-- Feed Items in Column 1 -->
+          <div class="col1-feed-list">
+            <article class="feed-item" data-id="2" data-category="pace">
+              <div class="feed-content">
+                <span class="feed-tag tag-hackathon">Pace</span>
+                <h4 class="feed-title">
+                  <a href="<?php echo $news_dir; ?>news.php?category=pace">
+                    Encouraging Student Lead Ideas and monthly show case of Student Projects
+                  </a>
+                </h4>
+                <div class="feed-meta">
+                  <span><i class="far fa-eye"></i> See Details</span>
+                  <span>&bull;</span>
+                  <span><i class="far fa-clock"></i> Issued on 05/10/26</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </aside>
+
+        <!-- Column 2: Featured Story -->
+        <section class="grid-col col-featured">
+          <div class="col-section-header">
+            <h2 class="col-heading">Featured Story</h2>
+            <span class="col-header-line"></span>
+          </div>
+
+<?php
+$visarjan_count_featured = 0;
+$visarjan_chk_dir = __DIR__ . '/SDSF_News/photoes_news/Ganesh Visarjan 2026';
+if (is_dir($visarjan_chk_dir)) {
+    $fls = scandir($visarjan_chk_dir);
+    foreach ($fls as $fl) {
+        if ($fl === '.' || $fl === '..') continue;
+        $ext = strtolower(pathinfo($fl, PATHINFO_EXTENSION));
+        if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp', 'gif'])) {
+            $visarjan_count_featured++;
+        }
+    }
+}
+?>
+
+          <!-- Featured Story: Workshop Conducted by Malaviya Mission Training Centre -->
+          <article class="featured-lead-article-ganesh" id="article-cyber-ethics" data-id="cyber_ethics" data-category="academic">
+            <div class="lead-editorial-body" style="padding-top: 4px;">
+              <div class="lead-badge-row">
+                <span class="lead-category-badge lead-festive-badge" style="background: #0284c7; color: white;"><i class="fas fa-shield-alt"></i> UGC-HRDC &bull; WORKSHOP CONDUCTED</span>
+                <span class="read-time-pill"><i class="far fa-clock"></i> 26–31 Oct 2026</span>
+              </div>
+              <h2 class="lead-main-headline" style="font-size: 1.65rem; line-height: 1.25; margin-top: 8px;">
+                <a href="<?php echo $news_dir; ?>news.php?category=all#article-cyber-ethics">
+                  Malaviya Mission Teacher Training Centre, DAVV in Association with School of Data Science and Forecasting Conducts Short Term Course in Cyber Security and Internet Ethics
+                </a>
+              </h2>
+              <p class="lead-sub-title-intro">
+                <em>Organized by Malaviya Mission Teacher Training Centre (Formerly UGC-HRDC), DAVV Indore <strong style="color: #0f172a;">in association with School of Data Science and Forecasting (SDSF)</strong> &bull; Coordinator: <strong style="color: #0f172a;">Dr. Govind Maheshwari</strong></em>
+              </p>
+              <div class="lead-byline-bar">
+                <div class="author-info">
+                  <i class="fas fa-university"></i> Organized by <strong>MMTTC (UGC-HRDC), DAVV</strong> in association with <strong>School of Data Science &amp; Forecasting (SDSF)</strong>
+                </div>
+                <div class="lead-meta-details">
+                  <span><i class="fas fa-user-tie"></i> Coordinator: <strong>Dr. Govind Maheshwari</strong></span>
+                  <span>&bull;</span>
+                  <span><i class="fas fa-laptop"></i> Online Mode</span>
+                  <span>&bull;</span>
+                  <span><i class="far fa-calendar-alt"></i> 26 Oct – 31 Oct 2026</span>
+                </div>
+              </div>
+              <p class="lead-summary-para">
+                The Malaviya Mission Teacher Training Centre (formally UGC-HRDC), Devi Ahilya Vishwavidyalaya, Indore (M.P.), in association with the <strong>School of Data Science &amp; Forecasting (SDSF)</strong>, successfully conducted a dedicated Short Term Course on <strong>Cyber Security and Internet Ethics</strong> from <strong>26th to 31st October 2026</strong> in <strong>Online Mode</strong>. The course was coordinated by <strong>Dr. Govind Maheshwari</strong> (Head, School of Data Science &amp; Forecasting, DAVV). The comprehensive program empowered educators and faculty members with practical skills to navigate today's dynamic digital threat landscape and maintain rigorous ethical standards in academia.
+              </p>
+              <div class="lead-highlights-box" style="margin-top: 15px; background: #f0f9ff; border: 1px solid #bae6fd;">
+                <h4 class="highlights-title" style="color: #0369a1;"><i class="fas fa-bullseye"></i> Key Course Objectives</h4>
+                <ul class="highlights-list">
+                  <li>To equip faculty with practical cybersecurity and digital ethics skills to protect personal and institutional data.</li>
+                  <li>To enable educators to integrate internet ethics, safe browsing, and data privacy principles seamlessly into their everyday academic teaching.</li>
+                </ul>
+              </div>
+              <div class="course-schedule-card" style="margin-top: 15px; padding: 14px 18px; background: #fafaf9; border: 1px solid #e7e5e4; border-radius: 8px; font-size: 0.9rem; line-height: 1.6;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+                  <div><strong><i class="fas fa-hands-helping" style="color:#0284c7;"></i> In Association With:</strong> School of Data Science &amp; Forecasting (SDSF)</div>
+                  <div><strong><i class="fas fa-user-tie" style="color:#0f766e;"></i> Course Coordinator:</strong> Dr. Govind Maheshwari</div>
+                  <div><strong><i class="fas fa-ticket-alt" style="color:#059669;"></i> Course Fee:</strong> <span style="color:#059669; font-weight:700;">No Registration Fee (Limited Seats)</span></div>
+                  <div><strong><i class="fas fa-broadcast-tower" style="color:#2563eb;"></i> Course Mode:</strong> Online Mode</div>
+                  <div><strong><i class="far fa-clock" style="color:#d97706;"></i> Daily Schedule:</strong> 10:00 AM – 1:00 PM &amp; 2:00 PM – 5:00 PM</div>
+                  <div><strong><i class="far fa-calendar-check" style="color:#7c3aed;"></i> Duration:</strong> 26-Oct-2026 to 31-Oct-2026</div>
+                </div>
+              </div>
+              <div class="lead-highlights-box" style="margin-top: 15px;">
+                <h4 class="highlights-title"><i class="fas fa-clipboard-check"></i> Essential Requirements for Online Participants</h4>
+                <ul class="highlights-list">
+                  <li>NOC / Permission from Participant's Institute</li>
+                  <li>Desktop / Laptop with reliable high-speed Internet connectivity</li>
+                  <li>Webcam, Headphone / Microphone</li>
+                </ul>
+              </div>
+              <div class="registration-links-section" style="margin-top: 14px; padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;">
+                <div style="text-align: center; margin-bottom: 8px;">
+                  <span style="display: inline-block; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; padding: 2px 8px; border-radius: 10px;">
+                    <i class="fas fa-archive"></i> Program Reference &amp; Portal Archive
+                  </span>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 18px;">
+                  <div style="text-align: center;">
+                    <span style="display: block; font-size: 0.72rem; font-weight: 600; color: #475569; margin-bottom: 3px;">Scan QR Code</span>
+                    <img src="<?php echo $news_dir; ?>photoes_news/cyber_security_qr_code.png" alt="Scan to Registration QR Code" style="width: 78px; height: 78px; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px; background: #ffffff;">
+                  </div>
+                  <div style="text-align: left; line-height: 1.45; font-size: 0.8rem;">
+                    <div style="margin-bottom: 5px;">
+                      <strong style="color: #0f172a;">Registration Form Link:-</strong>
+                      <a href="https://mmc.ugc.ac.in" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline; margin-left: 4px; word-break: break-all;">https://mmc.ugc.ac.in</a>
+                    </div>
+                    <div style="margin-bottom: 5px;">
+                      <strong style="color: #0f172a;">Registration Manual :-</strong>
+                      <a href="https://tinyurl.com/yu3b4nf5" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline; margin-left: 4px; word-break: break-all;">https://tinyurl.com/yu3b4nf5</a>
+                    </div>
+                    <div style="margin-bottom: 5px;">
+                      <strong style="color: #0f172a;">Registration Manual Video :-</strong>
+                      <a href="https://tinyurl.com/4cy43zsj" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline; margin-left: 4px; word-break: break-all;">https://tinyurl.com/4cy43zsj</a>
+                    </div>
+                    <div>
+                      <strong style="color: #0f172a;">NOC Format :-</strong>
+                      <a href="https://tinyurl.com/yu3b4nf5" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline; margin-left: 4px; word-break: break-all;">https://tinyurl.com/yu3b4nf5</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="contact-info-footer" style="margin-top: 16px; padding: 12px 16px; background: #ffffff; border-left: 4px solid #0284c7; border-radius: 4px; font-size: 0.84rem; color: #334155; line-height: 1.6;">
+                <strong><i class="fas fa-address-book" style="color: #0284c7;"></i> Organizing Committee &amp; Contact Desk:</strong><br>
+                <span><strong>Organized by:</strong> Malaviya Mission Teacher Training Centre (Formerly UGC-HRDC), DAVV Indore in association with School of Data Science &amp; Forecasting (SDSF)</span><br>
+                <span><strong>Course Coordinator:</strong> Dr. Govind Maheshwari (Head, School of Data Science &amp; Forecasting, DAVV)</span><br>
+                <span><strong>Website:</strong> <a href="https://hrdcindoredauniv.in/" target="_blank" rel="noopener noreferrer" style="color: #0284c7;">https://hrdcindoredauniv.in/</a></span> &bull;
+                <span><strong>Email:</strong> <a href="mailto:ugcascindore@gmail.com" style="color: #0284c7;">ugcascindore@gmail.com</a></span> &bull;
+                <span><strong>Contact No.:</strong> 0731-2462069</span> &bull;
+                <span><strong>WhatsApp:</strong> 8085558237</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Featured Story: GDG Recruitment -->
+          <article class="featured-lead-article-ganesh" data-id="gdg_recruitment" data-category="campus">
+            <div class="lead-media-wrapper-ganesh">
+              <a href="<?php echo $news_dir; ?>news.php?view=gallery" title="Click to view event gallery photos">
+                <img src="<?php echo $news_dir; ?>photoes_news/GDG Team Recruitment 2026/1.jpeg" alt="The Next Wave: GDG SDSF Core Team Recruitment" class="lead-main-img" loading="lazy" style="object-position: 50% 30% !important;">
+              </a>
+              <div class="lead-img-caption">
+                <span><i class="fas fa-camera"></i> GDG SDSF Core Team Recruitment &bull; 9th October 2026</span>
+              </div>
+            </div>
+            <div class="lead-editorial-body">
+              <div class="lead-badge-row">
+                <span class="lead-category-badge lead-festive-badge" style="background: #4285F4; color: white;"><i class="fab fa-google"></i> CAMPUS &amp; CULTURE &bull; GDG SDSF</span>
+                <span class="read-time-pill"><i class="far fa-clock"></i> 09/10/2026</span>
+              </div>
+              <h2 class="lead-main-headline" style="font-size: 1.65rem; line-height: 1.25; margin-top: 8px;">
+                <a href="<?php echo $news_dir; ?>news.php">
+                  The Next Wave: GDG SDSF Core Team Recruitment
+                </a>
+              </h2>
+              <p class="lead-sub-title-intro">
+                <em>Join GDGoC SDSF for a community info session to learn about GDG, meet new organizers, and celebrate past contributions.</em>
+              </p>
+              <div class="lead-byline-bar">
+                <div class="author-info">
+                  <i class="fas fa-feather-alt"></i> Blog By <strong>Om Singh Lodhi</strong> (M.Tech AI&DS)
+                </div>
+                <div class="lead-meta-details">
+                  <span><i class="far fa-calendar-alt"></i> 9 October 2026</span>
+                  <span>&bull;</span>
+                  <span><i class="fas fa-map-marker-alt"></i> Seminar Hall, SDSF, DAVV</span>
+                </div>
+              </div>
+              <p class="lead-summary-para">
+                The Next Wave is here! 🌊 Join GDGoC SDSF for an exciting community info session as we begin a new chapter. Get to know what GDG is all about, meet our new organizers, celebrate the contributions of the previous core team, and discover how you can become a part of the next GDG SDSF Core Team.
+              </p>
+              <?php
+              $gdg_count_main = 0;
+              $gdg_chk_dir_main = __DIR__ . '/SDSF_News/photoes_news/GDG Team Recruitment 2026';
+              if (is_dir($gdg_chk_dir_main)) {
+                  $fls = scandir($gdg_chk_dir_main);
+                  foreach ($fls as $fl) {
+                      if ($fl === '.' || $fl === '..') continue;
+                      $ext = strtolower(pathinfo($fl, PATHINFO_EXTENSION));
+                      if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp', 'gif'])) {
+                          $gdg_count_main++;
+                      }
+                  }
+              }
+              ?>
+              <div class="lead-action-row" style="margin-top: 10px;">
+                <a href="<?php echo $news_dir; ?>news.php?view=gallery#gdgGalleryBox" class="btn-view-gallery-action" title="Click to view all event photos in the Gallery">
+                  <i class="fas fa-images"></i> View Event Gallery (<?php echo $gdg_count_main > 0 ? $gdg_count_main . ' Photos' : 'All Photos'; ?>)
+                </a>
+                <a href="https://chat.whatsapp.com/DvsmySfinvVA5HE6kGaV2q" target="_blank" rel="noopener noreferrer" class="btn-read-full-story" style="background: #25D366; border-color: #25D366; color: white;">
+                  <i class="fab fa-whatsapp"></i> Join WhatsApp Community
+                </a>
+                <a href="https://gdg.community.dev/gdg-on-campus-school-of-data-science-and-forecasting-indore-india/" target="_blank" rel="noopener noreferrer" class="btn-view-gallery-action">
+                  <i class="fas fa-external-link-alt"></i> Visit GDG Page
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Featured Story: Ganesh Visarjan 2026 -->
+          <article class="featured-lead-article-ganesh" data-id="14" data-category="campus">
+            <div class="lead-media-wrapper-ganesh">
+              <a href="<?php echo $news_dir; ?>news.php?view=gallery" title="Click to view event gallery photos">
+                <img src="<?php echo $news_dir; ?>photoes_news/Ganesh Visarjan 2026/visarjan-2026-05.jpeg" alt="Ganesh Visarjan 2026: SDSF Bids Bappa a Heartfelt Farewell" class="lead-main-img" loading="lazy" style="object-position: 50% 60% !important;">
+              </a>
+              <div class="lead-img-caption">
+                <span><i class="fas fa-camera"></i> Ganesh Visarjan 2026 &bull; 25th September 2026</span>
+              </div>
+            </div>
+            <div class="lead-editorial-body">
+              <div class="lead-badge-row">
+                <span class="lead-category-badge lead-festive-badge"><i class="fas fa-om"></i> CAMPUS &amp; CULTURE &bull; GANESH VISARJAN</span>
+                <span class="read-time-pill"><i class="far fa-clock"></i> 25/09/2026</span>
+              </div>
+              <h2 class="lead-main-headline" style="font-size: 1.65rem; line-height: 1.25; margin-top: 8px;">
+                <a href="<?php echo $news_dir; ?>news.php">
+                  Ganesh Visarjan 2026: SDSF Bids Bappa a Heartfelt Farewell
+                </a>
+              </h2>
+              <p class="lead-sub-title-intro">
+                <em>A day of devotion, gratitude, and togetherness as the SDSF family bid farewell to Lord Ganesha until next year.</em>
+              </p>
+              <div class="lead-byline-bar">
+                <div class="author-info">
+                  <i class="fas fa-feather-alt"></i> Blog By <strong>Om Singh Lodhi</strong> (M.Tech AI&DS)
+                </div>
+                <div class="lead-meta-details">
+                  <span><i class="far fa-calendar-alt"></i> 25 September 2026</span>
+                  <span>&bull;</span>
+                  <span><i class="fas fa-map-marker-alt"></i> SDSF, DAVV, Indore</span>
+                </div>
+              </div>
+              <p class="lead-summary-para">
+                On 25th September 2026, SDSF students gathered at Bilavali Lake to bid farewell to Lord Ganesha during Ganesh Visarjan 2026. Visarjan is the traditional immersion of the idol, symbolising Bappa's return to his heavenly abode after the festive days.
+              </p>
+
+              <div class="festive-chants-box" style="margin: 14px 0 12px 0;">
+                <span class="chant-line-main">GANPATI BAPPA MORYA!</span>
+                <span class="chant-line-sub">Pudhchya Varshi Lavkar Ya!</span>
+              </div>
+
+              <div class="lead-action-row" style="margin-top: 10px;">
+                <a href="<?php echo $news_dir; ?>news.php?view=gallery" class="btn-view-gallery-action" title="Click to view all event photos in the Gallery">
+                  <i class="fas fa-images"></i> View Event Gallery (<?php echo $visarjan_count_featured > 0 ? $visarjan_count_featured . ' Photos' : 'All Photos'; ?>)
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Featured Story: SDSF Welcomes SDSF Ke Raja with Grandeur and Devotion -->
+          <article class="featured-lead-article-ganesh" data-id="12" data-category="campus" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+            <div class="lead-media-wrapper-ganesh">
+              <a href="<?php echo $news_dir; ?>news.php?view=gallery" title="Click to view event gallery photos">
+                <img src="<?php echo $news_dir; ?>photoes_news/Ganesh Ji 2026.jpg" alt="SDSF Welcomes SDSF Ke Raja - Ganesh Chaturthi 2026" class="lead-main-img" loading="lazy">
+              </a>
+              <div class="lead-img-caption">
+                <span><i class="fas fa-camera"></i> Photo By: Arpit Dubey (MBA) &bull; Auspicious Agaman of “SDSF Ke Raja” &bull; 14th September 2026</span>
+              </div>
+            </div>
+            <div class="lead-editorial-body">
+              <div class="lead-badge-row">
+                <span class="lead-category-badge lead-festive-badge"><i class="fas fa-om"></i> CAMPUS &amp; CULTURE &bull; FESTIVE SPECIAL</span>
+                <span class="read-time-pill"><i class="far fa-clock"></i> 14/09/2026</span>
+              </div>
+              <h2 class="lead-main-headline" style="font-size: 1.65rem; line-height: 1.25; margin-top: 8px;">
+                <a href="<?php echo $news_dir; ?>news.php">
+                  SDSF Welcomes “SDSF Ke Raja” with Grandeur and Devotion
+                </a>
+              </h2>
+              <p class="lead-sub-title-intro">
+                <em>A vibrant celebration of faith, togetherness, and student spirit at the School of Data Science &amp; Forecasting</em>
+              </p>
+              <div class="lead-byline-bar">
+                <div class="author-info">
+                  <i class="fas fa-feather-alt"></i> Blog By <strong>Joyobrata Das</strong> (M.Tech AI&DS) <strong>Student Press</strong>
+                </div>
+                <div class="lead-meta-details">
+                  <span><i class="far fa-calendar-alt"></i> 14 September 2026</span>
+                  <span>&bull;</span>
+                  <span><i class="fas fa-map-marker-alt"></i> SDSF, DAVV, Indore</span>
+                </div>
+              </div>
+              <p class="lead-summary-para" style="margin-bottom: 0;">
+                The School of Data Science &amp; Forecasting (SDSF), DAVV, Indore, came alive with devotion, enthusiasm, and festive spirit on 14th September 2026 as students and members of the SDSF family gathered to celebrate the auspicious Agaman (arrival) of Lord Ganesha, lovingly welcomed as <strong>“SDSF Ke Raja.”</strong>
+              </p>
+
+              <div class="festive-chants-box" style="margin: 14px 0 12px 0;">
+                <span class="chant-line-main">Ganapati Bappa Morya!</span>
+                <span class="chant-line-sub">Mangal Murti Morya! 🌺🙏</span>
+              </div>
+
+              <div class="lead-action-row" style="margin-top: 10px;">
+                <a href="<?php echo $news_dir; ?>news.php?view=gallery" class="btn-view-gallery-action" title="Click to view all event photos in the Gallery">
+                  <i class="fas fa-images"></i> View Event Gallery
+                </a>
+              </div>
+            </div>
+          </article>
+        
+    <!-- Yash Mathur Football Achievement Story Modal Popup -->
+    <div id="yashFootballModal" class="yash-story-modal-backdrop" style="display:none;" onclick="if(event.target===this){ closeYashFootballModal(); }">
+        <div class="yash-story-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="yashModalTitle">
+            <button type="button" class="yash-story-modal-close" onclick="closeYashFootballModal()" aria-label="Close story">&times;</button>
+            
+            <div class="yash-story-modal-media">
+                <img src="<?php echo $news_dir; ?>photoes_news/YashMathurFOOTBALL.jpeg" alt="Yash Mathur — DAVV UTD Football Team, District Level Championship" style="object-position: 50% 20% !important;">
+                <div class="yash-story-media-caption">
+                    <i class="fas fa-camera"></i> Yash Mathur &bull; District Level Men's Football Championship &bull; Govt. College Rau, Indore &bull; 28–30 Oct 2026
+                </div>
+            </div>
+
+            <div class="yash-story-modal-body">
+                <div class="yash-story-badge-row">
+                    <span class="yash-story-badge"><i class="fas fa-futbol"></i> CAMPUS &amp; CULTURE &bull; SPORTS ACHIEVEMENT</span>
+                    <span class="yash-story-date"><i class="far fa-clock"></i> 30/10/2026</span>
+                </div>
+
+                <h2 id="yashModalTitle" class="yash-story-title">
+                    🏆 SDSF's Yash Mathur Clinches Runners-Up at District Men's Football Championship
+                </h2>
+
+                <p class="yash-story-intro">
+                    <em>Representing DAVV UTD with pride, Yash Mathur brings home silver from the District Level Men's Football Competition held at Govt. College Rau, Indore.</em>
+                </p>
+
+                <div class="yash-story-byline">
+                    <div class="yash-byline-author">
+                        <i class="fas fa-feather-alt"></i> Blog By <strong>Om Singh Lodhi</strong> (M.Tech AI&amp;DS)
+                    </div>
+                    <div class="yash-byline-meta">
+                        <span><i class="far fa-calendar-alt"></i> 30 October 2026</span>
+                        <span>&bull;</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Govt. College Rau, Indore</span>
+                    </div>
+                </div>
+
+                <div class="yash-story-content">
+                    <p>
+                        The School of Data Science and Forecasting (SDSF), DAVV, is proud to celebrate the achievement of its student <strong>Yash Mathur</strong>, who represented the <strong>DAVV UTD Football Team</strong> at the prestigious <strong>District Level Men's Football Competition</strong> held at Government College, Rau, Indore, from <strong>28th to 30th October 2026</strong>.
+                    </p>
+                    <p>
+                        Competing against teams from across the district, Yash and the DAVV UTD squad demonstrated exceptional skill, teamwork, and competitive spirit throughout the tournament. The team's stellar run in the competition culminated in a well-deserved <strong>Runners-Up (Second Position)</strong> finish — a remarkable feat that reflects both individual talent and collective effort on the field.
+                    </p>
+
+                    <div class="yash-highlights-box">
+                        <h4 class="yash-highlights-title"><i class="fas fa-star"></i> Achievement Highlights</h4>
+                        <ul class="yash-highlights-list">
+                            <li><strong>Tournament:</strong> District Level Men's Football Competition</li>
+                            <li><strong>Venue:</strong> Government College, Rau, Indore</li>
+                            <li><strong>Duration:</strong> 28th – 30th October 2026</li>
+                            <li><strong>Result:</strong> 🥈 Runners-Up (Second Position)</li>
+                            <li><strong>Team:</strong> DAVV UTD Football Team</li>
+                        </ul>
+                    </div>
+
+                    <p>
+                        This achievement is a testament to Yash's dedication and passion for the sport, and SDSF proudly extends its heartfelt congratulations to him. We look forward to seeing him continue to represent DAVV and SDSF on bigger stages in the future. 🎉⚽
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .yash-story-modal-backdrop {
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(11, 19, 43, 0.85);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 9999999 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            animation: yashModalFadeIn 0.2s ease-out;
+        }
+        @keyframes yashModalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .yash-story-modal-dialog {
+            position: relative;
+            background: #ffffff;
+            width: 100%;
+            max-width: 780px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            box-sizing: border-box;
+            border: 1px solid #e2e8f0;
+            animation: yashModalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes yashModalSlideUp {
+            from { transform: scale(0.96) translateY(12px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        .yash-story-modal-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            line-height: 1;
+            color: #334155;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 20;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        .yash-story-modal-close:hover {
+            background: #dc2626;
+            color: #ffffff;
+            border-color: #dc2626;
+            transform: rotate(90deg);
+        }
+        .yash-story-modal-media {
+            width: 100%;
+            background: #0f172a;
+            position: relative;
+        }
+        .yash-story-modal-media img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+        .yash-story-media-caption {
+            padding: 8px 16px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.76rem;
+            color: #64748b;
+        }
+        .yash-story-modal-body {
+            padding: 24px 28px 28px;
+        }
+        .yash-story-badge-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .yash-story-badge {
+            background: #16a34a;
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .yash-story-date {
+            font-size: 0.78rem;
+            color: #64748b;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .yash-story-title {
+            font-family: var(--font-headline, 'Playfair Display', serif);
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: #0b132b;
+            line-height: 1.3;
+            margin: 0 0 10px 0;
+        }
+        .yash-story-intro {
+            font-size: 0.95rem;
+            color: #334155;
+            font-style: italic;
+            line-height: 1.55;
+            margin: 0 0 16px 0;
+        }
+        .yash-story-byline {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 10px 14px;
+            background: #f8fafc;
+            border-left: 3px solid #16a34a;
+            border-radius: 4px;
+            font-size: 0.82rem;
+            color: #475569;
+            margin-bottom: 20px;
+        }
+        .yash-byline-author i {
+            color: #16a34a;
+            margin-right: 4px;
+        }
+        .yash-story-content p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #1e293b;
+            margin: 0 0 14px 0;
+        }
+        .yash-highlights-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 18px 0;
+        }
+        .yash-highlights-title {
+            margin: 0 0 10px 0;
+            color: #166534;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .yash-highlights-title i {
+            color: #eab308;
+        }
+        .yash-highlights-list {
+            margin: 0;
+            padding-left: 20px;
+            color: #1e293b;
+            font-size: 0.88rem;
+            line-height: 1.8;
+        }
+        @media (max-width: 640px) {
+            .yash-story-modal-body {
+                padding: 18px 16px 22px;
+            }
+            .yash-story-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+
+    <script>
+        function openYashFootballModal() {
+            var modal = document.getElementById('yashFootballModal');
+            if (!modal) return;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeYashFootballModal() {
+            var modal = document.getElementById('yashFootballModal');
+            if (!modal) return;
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        window.openYashFootballModal = openYashFootballModal;
+        window.closeYashFootballModal = closeYashFootballModal;
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeYashFootballModal();
+            }
+        });
+    </script>
+
+
+    <!-- Monthly Website Updates — Full Notice Modal -->
+    <div id="webUpdatesModal" class="yash-story-modal-backdrop" style="display:none;" onclick="if(event.target===this){ closeWebUpdatesModal(); }">
+        <div class="yash-story-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="webUpdatesModalTitle">
+            <button type="button" class="yash-story-modal-close" onclick="closeWebUpdatesModal()" aria-label="Close notice">&times;</button>
+
+            <!-- Decorative banner -->
+            <div style="background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%); padding: 36px 28px 28px; text-align: center;">
+                <i class="fas fa-laptop-code" style="font-size: 2.8rem; color: rgba(255,255,255,0.9); display: block; margin-bottom: 10px;"></i>
+                <span style="color: rgba(255,255,255,0.7); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-mono, monospace);">SDSF Chronicle &bull; Department Announcement</span>
+            </div>
+
+            <div class="yash-story-modal-body">
+                <div class="yash-story-badge-row">
+                    <span class="yash-story-badge" style="background: #2563eb;"><i class="fas fa-globe"></i> DEPARTMENT NOTICE &bull; WEBSITE</span>
+                    <span class="yash-story-date"><i class="far fa-clock"></i> Open Anytime</span>
+                </div>
+
+                <h2 id="webUpdatesModalTitle" class="yash-story-title">
+                    Monthly Website Updates
+                </h2>
+
+                <p class="yash-story-intro">
+                    <em>Students are encouraged to submit updates about their achievements and projects to the SDSF tech team for consideration and possible publication on the department's official website.</em>
+                </p>
+
+                <div class="yash-story-content">
+                    <p>
+                        The School of Data Science and Forecasting (SDSF) invites all students to share updates about their personal academic achievements and recently completed projects. Selected submissions will be published on the official SDSF department website.
+                    </p>
+                    <p>
+                        Eligible submissions may include academic accomplishments, independently developed software or data science projects, research contributions, or any other noteworthy work undertaken by a student of SDSF.
+                    </p>
+
+                    <div class="yash-highlights-box" style="border-color: #bfdbfe; background: #eff6ff;">
+                        <h4 class="yash-highlights-title" style="color: #1d4ed8;"><i class="fas fa-info-circle" style="color: #2563eb;"></i> Submission Guidelines</h4>
+                        <ul class="yash-highlights-list">
+                            <li>Send your submission by email to the tech team at the addresses listed below.</li>
+                            <li>All submissions are received and retained as a departmental record.</li>
+                            <li>Only selected, noteworthy submissions will be published on the official website.</li>
+                            <li>Students whose submissions are selected will receive a reply email from the tech team.</li>
+                        </ul>
+                    </div>
+
+                    <div class="yash-highlights-box" style="border-color: #bfdbfe; background: #f0f9ff; margin-top: 14px;">
+                        <h4 class="yash-highlights-title" style="color: #1d4ed8;"><i class="fas fa-envelope" style="color: #2563eb;"></i> Contact &mdash; Tech Team</h4>
+                        <ul class="yash-highlights-list" style="list-style: none; padding-left: 0;">
+                            <li style="padding: 6px 0; border-bottom: 1px solid #dbeafe; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;">
+                                <span><strong>Tech Lead:</strong> Joyobrata Das</span>
+                                <a href="mailto:joyobratadas.85912@gmail.com" style="color: #2563eb; word-break: break-all; font-weight: 500;">joyobratadas.85912@gmail.com</a>
+                            </li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid #dbeafe; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;">
+                                <span><strong>Web Team / Host:</strong> Om Singh Lodhi</span>
+                                <a href="mailto:omsinghlodhi21@gmail.com" style="color: #2563eb; word-break: break-all; font-weight: 500;">omsinghlodhi21@gmail.com</a>
+                            </li>
+                            <li style="padding: 6px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;">
+                                <span><strong>Web Team / Host:</strong> Alivia Hossain</span>
+                                <a href="mailto:aliviahossain12@gmail.com" style="color: #2563eb; word-break: break-all; font-weight: 500;">aliviahossain12@gmail.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openWebUpdatesModal() {
+            var modal = document.getElementById('webUpdatesModal');
+            if (!modal) return;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            if (window.markNotifWebUpdatesRead) {
+                window.markNotifWebUpdatesRead();
+            } else {
+                try { localStorage.setItem('sdsf_web_updates_notif_read_v1', 'true'); } catch(e){}
+                var b = document.getElementById('notifBadge');
+                if (b) b.classList.add('notif-badge-hidden');
+            }
+        }
+        function closeWebUpdatesModal() {
+            var modal = document.getElementById('webUpdatesModal');
+            if (!modal) return;
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        window.openWebUpdatesModal = openWebUpdatesModal;
+        window.closeWebUpdatesModal = closeWebUpdatesModal;
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') { closeWebUpdatesModal(); }
+        });
+    </script>
+
+</section>
+
+        <!-- Column 3: Trending Stories -->
+        <aside class="grid-col col-trending">
+          <div class="col-section-header">
+            <h2 class="col-heading">Trending Stories</h2>
+            <span class="col-header-line"></span>
+          </div>
+
+          <div class="trending-list">
+            <!-- Trending Item: Workshop Conducted by Malaviya Mission Training Centre -->
+            <article class="trending-card" data-id="cyber_ethics" data-category="academic" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px;">
+              <div class="trending-media">
+                <a href="<?php echo $news_dir; ?>news.php?category=all#article-cyber-ethics">
+                  <img src="<?php echo $news_dir; ?>photoes_news/cyber_security_ethics_thumb.jpeg" alt="Workshop Conducted: Cyber Security and Internet Ethics Course" loading="lazy">
+                </a>
+                <span class="trend-rank" style="background: #0284c7; color: #fff;"><i class="fas fa-shield-alt"></i></span>
+              </div>
+              <div class="trending-info">
+                <div style="display: inline-flex; align-items: center; gap: 5px; font-size: 0.62rem; font-weight: 700; color: #0369a1; background: #e0f2fe; border: 1px solid #bae6fd; padding: 1px 6px; border-radius: 12px; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.4px;">
+                  <span style="width: 5px; height: 5px; background: #0284c7; border-radius: 50%; box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3);"></span> WORKSHOP CONDUCTED
+                </div>
+                <h4 class="trending-title">
+                  <a href="<?php echo $news_dir; ?>news.php?category=all#article-cyber-ethics">
+                    Malaviya Mission Training Centre Conducts Course in Cyber Security &amp; Internet Ethics
+                  </a>
+                </h4>
+                <div class="trending-meta">
+                  <span class="trend-views" style="color: #0369a1;"><i class="fas fa-check-circle"></i> Completed</span>
+                  <span class="trend-date"><i class="far fa-clock"></i> 26–31 Oct 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Trending Item 09: ANDAI Placement Special -->
+            <article class="trending-card" data-id="13" data-category="campus" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px;">
+              <div class="trending-media">
+                <a href="<?php echo $news_dir; ?>news.php">
+                  <img src="<?php echo $news_dir; ?>photoes_news/ANDAI Internship 2026.jpeg" alt="ANDAI Virtual Internship Selected Students" loading="lazy">
+                </a>
+                <span class="trend-rank">01</span>
+              </div>
+              <div class="trending-info">
+                <div style="display: inline-flex; align-items: center; gap: 5px; font-size: 0.62rem; font-weight: 700; color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; padding: 1px 6px; border-radius: 12px; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.4px;">
+                  <span style="width: 5px; height: 5px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);"></span> Placements 2026
+                </div>
+                <h4 class="trending-title">
+                  <a href="<?php echo $news_dir; ?>news.php">
+                    14 SDSF Students Selected for ANDAI Virtual Internship
+                  </a>
+                </h4>
+                <div class="trending-meta">
+                  <span class="trend-views" style="color: #166534;"><i class="fas fa-user-graduate"></i> 14 Selected</span>
+                  <span class="trend-date"><i class="far fa-clock"></i> 10th Oct 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Trending Item 07: Placement Special -->
+            <article class="trending-card" data-id="10" data-category="campus" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px;">
+              <div class="trending-media">
+                <a href="<?php echo $news_dir; ?>news.php">
+                  <img src="<?php echo $news_dir; ?>photoes_news/Orange_Placed_Students.png" alt="Orange Data Tech Selected Students" loading="lazy">
+                </a>
+                <span class="trend-rank">02</span>
+              </div>
+              <div class="trending-info">
+                <div style="display: inline-flex; align-items: center; gap: 5px; font-size: 0.62rem; font-weight: 700; color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; padding: 1px 6px; border-radius: 12px; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.4px;">
+                  <span style="width: 5px; height: 5px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);"></span> Placements 2026
+                </div>
+                <h4 class="trending-title">
+                  <a href="<?php echo $news_dir; ?>news.php">
+                    Six SDSF Students Selected at Orange Data Tech
+                  </a>
+                </h4>
+                <div class="trending-meta">
+                  <span class="trend-views" style="color: #166534;"><i class="fas fa-user-graduate"></i> 6 Placed</span>
+                  <span class="trend-date"><i class="far fa-clock"></i> 5th Sep 2026</span>
+                </div>
+              </div>
+            </article>
+            <!-- Trending Item 08: Placement Special -->
+            <article class="trending-card" data-id="10" data-category="campus" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px;">
+              <div class="trending-media">
+                <a href="<?php echo $news_dir; ?>news.php">
+                  <img src="<?php echo $news_dir; ?>photoes_news\Rakuten_placed_students.jpeg" alt="Rakuten Placed Students" loading="lazy">
+                </a>
+                <span class="trend-rank">03</span>
+              </div>
+              <div class="trending-info">
+                <div style="display: inline-flex; align-items: center; gap: 5px; font-size: 0.62rem; font-weight: 700; color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; padding: 1px 6px; border-radius: 12px; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.4px;">
+                  <span style="width: 5px; height: 5px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);"></span> Placements 2026
+                </div>
+                <h4 class="trending-title">
+                  <a href="<?php echo $news_dir; ?>news.php">
+                    Two SDSF Students Selected at Rakuten Symphony
+                  </a>
+                </h4>
+                <div class="trending-meta">
+                  <span class="trend-views" style="color: #166534;"><i class="fas fa-user-graduate"></i> 2 Placed</span>
+                  <span class="trend-date"><i class="far fa-clock"></i> 5th Sep 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <?php
+            $vedant_story_image = 'vedanthackotberfest.jpeg';
+            ?>
+            <article class="trending-card vedant-trending-card vedant-preview-story-card"
+                data-chronicle-href="<?php echo $news_dir; ?>news.php">
+              <div class="trending-media">
+                <img src="<?php echo htmlspecialchars($vedant_story_image, ENT_QUOTES); ?>"
+                  alt="Vedant Khare with his award at Hacktoberfest Hack Day" loading="lazy">
+                <span class="trend-rank">04</span>
+              </div>
+              <div class="trending-info">
+                <span class="vedant-story-kicker"><i class="fas fa-trophy" aria-hidden="true"></i> Hackathon win</span>
+                <h4 class="trending-title">Kodith Kaijus win "Best Use of Gemma 4" at Hacktoberfest Hack Day by MLH x PyData Indore</h4>
+                <div class="trending-meta">
+                  <span class="trend-views"><i class="fas fa-award" aria-hidden="true"></i> Winner</span>
+                  <span class="trend-date"><i class="far fa-clock" aria-hidden="true"></i> 4th Oct 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Trending Item 00: Ganesh Visarjan -->
+            <article class="trending-card" data-id="14" data-category="campus">
+              <div class="trending-media">
+                <a href="<?php echo $news_dir; ?>news.php?category=all#article-visarjan">
+                  <img src="<?php echo $news_dir; ?>photoes_news/Ganesh Visarjan 2026/visarjan-2026-05.jpeg" alt="Ganesh Visarjan 2026: SDSF Bids Bappa a Heartfelt Farewell" loading="lazy">
+                </a>
+                <span class="trend-rank" style="background: linear-gradient(135deg, #b45309 0%, #ea580c 100%); color: #ffffff;">05</span>
+              </div>
+              <div class="trending-info">
+                <h4 class="trending-title">
+                  <a href="<?php echo $news_dir; ?>news.php?category=all#article-visarjan">
+                     Ganesh Visarjan 2026: SDSF Bids Bappa a Heartfelt Farewell
+                  </a>
+                </h4>
+                <div class="trending-meta">
+                  <span class="trend-views" style="color: #ea580c;"><i class="fas fa-om"></i> Campus &amp; Culture</span>
+                  <span class="trend-date"><i class="far fa-clock"></i> 25th Sep 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Trending Item 01: SDSF Ke Raja -->
+            <article class="trending-card" data-id="12" data-category="campus">
+              <div class="trending-media">
+                <a href="<?php echo $news_dir; ?>news.php">
+                  <img src="<?php echo $news_dir; ?>photoes_news/Ganesh Ji 2026.jpg" alt="SDSF Ke Raja" loading="lazy">
+                </a>
+                <span class="trend-rank" style="background: linear-gradient(135deg, #b45309 0%, #ea580c 100%); color: #ffffff;">06</span>
+              </div>
+              <div class="trending-info">
+                <h4 class="trending-title">
+                  <a href="<?php echo $news_dir; ?>news.php">
+                    SDSF Welcomes “SDSF Ke Raja” with Grandeur and Devotion
+                  </a>
+                </h4>
+                <div class="trending-meta">
+                  <span class="trend-views" style="color: #ea580c;"><i class="fas fa-om"></i> Campus &amp; Culture</span>
+                  <span class="trend-date"><i class="far fa-clock"></i> 14th Sep 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Trending Item 02: Certification Of Appreciation - Team Cypher X3 -->
+            <article class="trending-card" data-id="cypher-x3" data-category="pace">
+              <div class="trending-media">
+                <a href="<?php echo $news_dir; ?>news.php?category=pace#pace-cypher-x3">
+                  <img src="<?php echo htmlspecialchars($certif_cover, ENT_QUOTES); ?>" alt="Certification Of Appreciation - Team Cypher X3 at Aagaaz 26" loading="lazy">
+                </a>
+                <span class="trend-rank" style="background: linear-gradient(135deg, #b45309 0%, #f59e0b 100%); color: #ffffff;">06</span>
+              </div>
+              <div class="trending-info">
+                <h4 class="trending-title">
+                  <a href="<?php echo $news_dir; ?>news.php?category=pace#pace-cypher-x3">
+                    Certification Of appreciation presented to Team Cypher X3 at AAgaaz 26
+                  </a>
+                </h4>
+                <div class="trending-meta">
+                  <span class="trend-views" style="color: #b45309;"><i class="fas fa-award"></i> PACE &bull; Felicitation</span>
+                  <span class="trend-date"><i class="far fa-clock"></i> 17th Sep 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Trending Item 03: SDSF Induction Aagaaz 26 -->
+            <article class="trending-card" data-id="13" data-category="campus">
+              <div class="trending-media">
+                <a href="<?php echo $news_dir; ?>news.php?view=gallery#inductionGalleryBox">
+                  <img src="<?php echo htmlspecialchars($induction_cover, ENT_QUOTES); ?>" alt="SDSF Induction Aagaaz 26" loading="lazy">
+                </a>
+                <span class="trend-rank">07</span>
+              </div>
+              <div class="trending-info">
+                <h4 class="trending-title">
+                  <a href="<?php echo $news_dir; ?>news.php?view=gallery#inductionGalleryBox">
+                    SDSF Induction Aagaaz 26: A Warm Welcome for the 2026 Batch
+                  </a>
+                </h4>
+                <div class="trending-meta">
+                  <span class="trend-views"><i class="fas fa-user-graduate"></i> Campus &amp; Culture</span>
+                  <span class="trend-date"><i class="far fa-clock"></i> 17th Sep 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Trending Item 04 -->
+            <article class="trending-card" data-id="9" data-category="pace">
+              <div class="trending-media">
+                <a href="<?php echo $news_dir; ?>news.php?category=pace">
+                  <img src="<?php echo $news_dir; ?>photoes_news/SIH255RunnerUps/SIH 25 runnerup.jpeg" alt="Smart India Hackathon 2025 Runner-Ups" loading="lazy">
+                </a>
+                <span class="trend-rank">08</span>
+              </div>
+              <div class="trending-info">
+                <h4 class="trending-title">
+                  <a href="<?php echo $news_dir; ?>news.php?category=pace">
+                    Smart India Hackathon 2025 (LNCT Bhopal): Runner-Up Guidance for Current Participants
+                  </a>
+                </h4>
+                <div class="trending-meta">
+                  <span class="trend-views"><i class="far fa-eye"></i> Watch More</span>
+                  <span class="trend-date"><i class="far fa-clock"></i> 5th Sep 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Trending Item 05 -->
+            <article class="trending-card" data-id="10" data-category="pace">
+              <div class="trending-media">
+                <a href="<?php echo $news_dir; ?>news.php?category=pace">
+                  <img src="<?php echo $news_dir; ?>photoes_news/Hack for green/team.jpeg" alt="Hack for Green India" loading="lazy">
+                </a>
+                <span class="trend-rank">09</span>
+              </div>
+              <div class="trending-info">
+                <h4 class="trending-title">
+                  <a href="<?php echo $news_dir; ?>news.php?category=pace">
+                    Hack for Green भारत — India’s First AI Sustainability Hackathon Winners
+                  </a>
+                </h4>
+                <div class="trending-meta">
+                  <span class="trend-views"><i class="far fa-eye"></i> Watch More</span>
+                  <span class="trend-date"><i class="far fa-clock"></i> 5th Sep 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Trending Item 06 -->
+            <article class="trending-card" data-id="11" data-category="pace">
+              <div class="trending-media">
+                <a href="<?php echo $news_dir; ?>news.php?category=pace">
+                  <img src="<?php echo $news_dir; ?>photoes_news/India-Israle/team.jpeg" alt="India-Israel Hackathon" loading="lazy">
+                </a>
+                <span class="trend-rank">10</span>
+              </div>
+              <div class="trending-info">
+                <h4 class="trending-title">
+                  <a href="<?php echo $news_dir; ?>news.php?category=pace">
+                    India - Israel Hackathon &amp; Symposium: "The Circular Economy Water Challenge"
+                  </a>
+                </h4>
+                <div class="trending-meta">
+                  <span class="trend-views"><i class="far fa-eye"></i> Watch More</span>
+                  <span class="trend-date"><i class="far fa-clock"></i> 5th Sep 2026</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </aside>
+
+      </div>
+    </main>
+
+    <!-- 7. Editorial Footnote / Broadsheet Imprint Bar -->
+    <footer class="newspaper-footer-bar" style="border-top: 2px solid #0f172a; margin-top: 18px; padding: 12px 20px; background: #f8fafc; font-size: 0.78rem; color: #475569;">
+      <div class="newspaper-footer-inner" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px;">
+        <div class="press-imprint">
+          <strong style="color: #0b132b; font-family: var(--font-headline, serif);">SDSF CHRONICLE</strong> &bull; Published by School of Data Science &amp; Forecasting, Takshila Campus, DAVV, Khandwa Road, Indore (M.P.) – 452001.
+        </div>
+        <div class="press-links" style="font-weight: 500;">
+          <a href="<?php echo $news_dir; ?>news.php" style="color: #1e40af; text-decoration: none;">Editorial Board</a> &bull; 
+          <a href="about.php" style="color: #1e40af; text-decoration: none;">About SDSF</a> &bull; 
+          <a href="events.php" style="color: #1e40af; text-decoration: none;">Events Desk</a> &bull; 
+          <a href="career_nirman/career.php" style="color: #1e40af; text-decoration: none;">Placement Bureau</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  
+  <!-- Interactive Click Prompt Toast (Rendered on topmost layer) -->
+  <div class="nexus-click-prompt" id="nexusClickPrompt" role="tooltip">
+    <div class="nexus-prompt-inner">
+      <div class="prompt-icon-ring">
+        <i class="fas fa-external-link-alt"></i>
+      </div>
+      <div class="prompt-text-wrap">
+        <span class="prompt-label">SDSF CHRONICLE</span>
+        <span class="prompt-action">Go to the official website <i class="fas fa-arrow-right"></i></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  (function() {
+    function updateShowcaseClock() {
+      const now = new Date();
+      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      
+      const dayName = days[now.getDay()];
+      const monthName = months[now.getMonth()];
+      const dateNum = now.getDate();
+      const year = now.getFullYear();
+
+      const hrs = String(now.getHours()).padStart(2, '0');
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      const secs = String(now.getSeconds()).padStart(2, '0');
+
+      const clockEl = document.getElementById("nexusShowcaseClock");
+      const dayEl = document.getElementById("nexusShowcaseDay");
+      const dateEl = document.getElementById("nexusShowcaseDate");
+
+      if (clockEl) clockEl.textContent = `${hrs}:${mins}:${secs}`;
+      if (dayEl) dayEl.textContent = dayName;
+      if (dateEl) dateEl.textContent = `${dayName}, ${monthName} ${dateNum}, ${year}`;
+    }
+    updateShowcaseClock();
+    setInterval(updateShowcaseClock, 1000);
+  })();
+
+  // 1st click shows prompt, 2nd click navigates to official website
+  (function() {
+    const container = document.getElementById("nexusShowcaseContainer");
+    const prompt = document.getElementById("nexusClickPrompt");
+    if (!container || !prompt) return;
+
+    let isPromptActive = false;
+    let autoDismissTimer = null;
+
+    container.addEventListener("click", function(e) {
+      const previewStoryCard = e.target.closest(".vedant-preview-story-card");
+      if (previewStoryCard) {
+        window.location.href = previewStoryCard.dataset.chronicleHref;
+        return;
+      }
+
+      // If prompt is already visible, clicking again opens the main newspaper website
+      if (isPromptActive) {
+        const printMediaLink = e.target.closest(".print-media-nav-link");
+        window.location.href = printMediaLink
+          ? printMediaLink.href
+          : "<?php echo $news_dir; ?>news.php";
+        return;
+      }
+
+      // First click: prevent instant jump and show the prompt
+      e.preventDefault();
+      e.stopPropagation();
+
+      const rect = container.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+
+      // Keep comfortably within container bounds
+      const minX = 140;
+      const maxX = rect.width - 140;
+      const minY = 40;
+      const maxY = rect.height - 50;
+
+      const posX = Math.max(minX, Math.min(maxX, clickX));
+      const posY = Math.max(minY, Math.min(maxY, clickY));
+
+      prompt.style.left = posX + "px";
+      prompt.style.top = posY + "px";
+      prompt.classList.add("show");
+      isPromptActive = true;
+
+      if (autoDismissTimer) clearTimeout(autoDismissTimer);
+      autoDismissTimer = setTimeout(function() {
+        prompt.classList.remove("show");
+        isPromptActive = false;
+      }, 5000);
+    });
+
+    // Clicking the prompt badge directly navigates
+    prompt.addEventListener("click", function(e) {
+      e.stopPropagation();
+      window.location.href = "<?php echo $news_dir; ?>news.php";
+    });
+
+    // Clicking anywhere outside closes the prompt
+    document.addEventListener("click", function(e) {
+      if (!container.contains(e.target)) {
+        prompt.classList.remove("show");
+        isPromptActive = false;
+        if (autoDismissTimer) clearTimeout(autoDismissTimer);
+      }
+    });
+  })();
+</script>

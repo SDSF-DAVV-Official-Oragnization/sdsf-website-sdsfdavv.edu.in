@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research | SDSF</title>
+  <script src="research_page.js"></script>
+  <link rel="stylesheet" href="research_page.css">
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body id="top">
+
+ <div id="header"></div>
+    <script>
+        fetch("../header.html")
+        .then(res => res.text())
+        .then(data => document.getElementById("header").innerHTML = data);
+    </script>
+
+
+  <!-- ===== Hero Section ===== -->
+  <section class="research-hero">
+    <h2>Research Excellence</h2>
+    <h3>Pushing the boundaries of knowledge through innovation and discovery.</h3>
+    <p>
+      We are committed to advancing research in Data Science, Machine Learning,
+      Environmental Management, and Forecasting. Our interdisciplinary approach combines
+      theoretical excellence with practical applications to address real-world challenges.
+    </p>
+  </section>
+
+  <!-- ===== Research Stats ===== -->
+  <section class="stats-section">
+    <div class="stat-card" onclick="scrollToSection('supervisors-section')">
+      <div class="stat-number">8</div>
+      <div class="stat-label">Research Supervisors</div>
+    </div>
+    <div class="stat-card" onclick="scrollToSection('phd-section')">
+      <div class="stat-number">47</div>
+      <div class="stat-label">Ph.D.s Awarded</div>
+    </div>
+    <!-- <div class="stat-card" onclick="scrollToSection('publications-section')">
+      <div class="stat-number">86+</div>
+      <div class="stat-label">Publications</div>
+    </div> -->
+    <div class="stat-card" onclick="scrollToSection('projects-section')">
+      <div class="stat-number">8</div>
+      <div class="stat-label">Funded Projects</div>
+    </div>
+  </section>
+
+  <!-- ===== Research Areas ===== -->
+  <div class="areas-grid">
+
+  <div class="area-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <div class="area-icon">📊</div>
+        <h3>Data Science</h3>
+        <p>Advanced analytics and data-driven decision making</p>
+      </div>
+      <div class="card-back">
+        <h3>More About Data Science</h3>
+        <p>Includes big data, visualization, statistical modeling, and generative AI analytics.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <div class="area-icon">🤖</div>
+        <h3>Machine Learning</h3>
+        <p>Intelligent systems and predictive modeling</p>
+      </div>
+      <div class="card-back">
+        <h3>More About ML</h3>
+        <p>Deep learning, neural networks, reinforcement learning & optimization.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <div class="area-icon">🎯</div>
+        <h3>Decision Sciences</h3>
+        <p>Optimization and strategic planning</p>
+      </div>
+      <div class="card-back">
+        <h3>More About Decision Sciences</h3>
+        <p>blends mathematics, statistics, and computational techniques to support smarter decision.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <div class="area-icon">🌱</div>
+        <h3>Environmental</h3>
+        <p>Sustainable development and climate modeling</p>
+      </div>
+      <div class="card-back">
+        <h3>More About Enviromental Sciences</h3>
+        <p>understanding the interaction between human systems and natural ecosystems.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <div class="area-icon">📈</div>
+        <h3>Modelling </h3>
+        <p>System dynamics and forecasting</p>
+      </div>
+      <div class="card-back">
+        <h3>More About Modelling</h3>
+        <p>involves creating mathematical and computational models to represent real-world systems.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <div class="area-icon">⚙️</div>
+        <h3>Technology</h3>
+        <p>Innovation and technology assessment</p>
+      </div>
+      <div class="card-back">
+        <h3>More About Technology Assesment</h3>
+        <p>evaluates the impacts, risks, and future potential of emerging technologies. </p>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+  <!-- ===== Tab Navigation ===== -->
+  <section class="research-tabs">
+    <div class="tabs-container">
+      <button class="tab-btn active" onclick="openTab('phd-section')">Ph.D.s Awarded</button>
+      <button class="tab-btn" onclick="openTab('supervisors-section')">Supervisors</button>
+      <button class="tab-btn" onclick="openTab('publications-section')">Publications</button>
+      <button class="tab-btn" onclick="openTab('projects-section')">Projects</button>
+      <button class="tab-btn" onclick="openTab('academic-projects-section')">Academic Projects</button>
+    </div>
+  </section>
+
+  <!-- ===== Ph.D. Awarded Section ===== -->
+<section id="phd-section" class="content-section active">
+  <div class="section-header">
+    <h2>Ph.D.s Awarded</h2>
+    <p>47 doctoral degrees awarded since 1998</p>
+  </div>
+
+
+  <div class="table-container">
+    <table class="phd-table" id="phd-table">
+      <thead>
+        <tr>
+          <th>S.No.</th>
+          <th>Name</th>
+          <th>Year</th>
+          <th>Supervisor(s)</th>
+          <th>Thesis Title</th>
+        </tr>
+      </thead>
+      <tbody id="phd-tbody">
+        <!-- Table rows will be populated by JavaScript -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+  <!-- ===== Supervisors Section ===== -->
+  <section id="supervisors-section" class="content-section">
+    <div class="section-header">
+      <h2>Research Supervisors</h2>
+      <p>Expert faculty guiding doctoral research</p>
+    </div>
+
+    <div class="supervisors-grid" id="supervisors-list">
+      <!-- Supervisor cards will be populated by JavaScript -->
+    </div>
+  </section>
+
+  <!-- ===== Publications Section ===== -->
+  <section id="publications-section" class="content-section">
+    <div class="section-header">
+      <h2>Research Publications</h2>
+      <p>Contributing to global knowledge through quality research</p>
+    </div>
+
+    
+    <div class="publications-list" id="publications-list">
+      <!-- Publications will be populated by JavaScript -->
+    </div>
+  </section>
+
+  <!-- ===== Projects Section ===== -->
+  <section id="projects-section" class="content-section">
+    <div class="section-header">
+      <h2>Research Projects</h2>
+      <p>Funded research initiatives driving innovation</p>
+    </div>
+
+    <div class="projects-grid" id="projects-list">
+      <!-- Projects will be populated by JavaScript -->
+    </div>
+  </section>
+
+ <!-- Academic Project Section -->
+<section id="academic-projects-section" class="content-section">
+  <div class="section-header">
+    <h2>Academic Projects</h2>
+    <p>Here are the academic projects</p>
+
+    <div class="projects-contents">
+
+  <div class="soft-projects">
+
+  <div class="soft-project-card">
+    <h3>1. Masters Programme in Science and Technology Communication</h3>
+    <p><strong>Co-ordinator:</strong> Dr. V.B. Gupta</p>
+    <p><strong>Funding Agency:</strong> NCSTC, DST, New Delhi</p>
+    <p><strong>Amount Sanctioned:</strong> Rs. 18,12,000/-</p>
+    <p><strong>Duration:</strong> Eight Years</p>
+  </div>
+
+  <div class="soft-project-card">
+    <h3>2. Masters Programme in Science Communication</h3>
+    <p><strong>Co-ordinator:</strong> Dr. V.B. Gupta</p>
+    <p><strong>Funding Agency:</strong> NCSTC, DST, New Delhi</p>
+    <p><strong>Amount Sanctioned:</strong> Rs. 25,20,000/-</p>
+    <p><strong>Duration:</strong> Five Years</p>
+  </div>
+
+  <div class="soft-project-card">
+    <h3>3. P.G. Diploma in Science Journalism (Distance Education)</h3>
+    <p><strong>Co-ordinator:</strong> Dr. V.B. Gupta</p>
+    <p><strong>Funding Agency:</strong> NCSTC, DST, New Delhi</p>
+    <p><strong>Amount Sanctioned:</strong> Rs. 20,00,000/-</p>
+    <p><strong>Duration:</strong> Five Years</p>
+  </div>
+
+</div>
+
+</div>
+
+  </div>
+</section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="main-footer" role="contentinfo">
+      <div class="footer-top-bar">
+          <div class="footer-top-line"></div>
+          <a href="#" class="footer-search-btn" aria-label="Search website" title="Search">
+              <i class="fas fa-search"></i>
+          </a>
+      </div>
+
+      <div class="footer-container">
+          <div class="footer-col footer-col-address">
+              <h3>UNIVERSITY ADDRESS</h3>
+              <p class="univ-title">School of Data Science and Forecasting</p>
+              <p>Devi Ahilya Vishwavidyalaya</p>
+              <p>DAVV Takshila Campus, Khandwa Road</p>
+              <p>Indore, Madhya Pradesh – 452001</p>
+              <p class="contact-info"><strong>Phone:</strong> +91 0731 2470330</p>
+              <p class="contact-info"><strong>Email:</strong> govind_maheshwari2001@yahoo.com</p>
+              <br>
+              <p class="univ-subtitle">SDSF Information Center</p>
+              <p>Indore</p>
+          </div>
+
+          <div class="footer-col footer-col-social">
+              <h3>SOCIAL MEDIA</h3>
+              <ul class="social-list">
+                  <li>
+                      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                          <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://www.instagram.com/davv_sdsf/" target="_blank" rel="noopener noreferrer">
+                          <i class="fab fa-instagram"></i> <span>Instagram</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                          <i class="fab fa-twitter"></i> <span>Twitter</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                          <i class="fab fa-youtube"></i> <span>YouTube</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                          <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="footer-col footer-col-links">
+              <h3>QUICK LINKS</h3>
+              <ul class="footer-links-list">
+                  <li><a href="../admission.php">Careers</a></li>
+                  <li><a href="https://www.dauniv.ac.in/ragging" target="_blank" rel="noopener noreferrer">Anti-Ragging Committee</a></li>
+                  <li><a href="https://www.dauniv.ac.in/grievance-redressal-system" target="_blank" rel="noopener noreferrer">Grievance Redressal Committee</a></li>
+                  <li><a href="https://www.dauniv.ac.in/digital-lib" target="_blank" rel="noopener noreferrer">Digital Library</a></li>
+                  <li><a href="../iqac/iqac.html">IQAC Cell</a></li>
+                  <li><a href="../academics.php">Ordinance & Statutes</a></li>
+                  <li><a href="../events.php">Technology & Bhartiya Bhasha</a></li>
+                  <li><a href="https://e-sanad.nic.in" target="_blank" rel="noopener noreferrer">e-SANAD</a></li>
+              </ul>
+          </div>
+
+          <div class="footer-col footer-col-parents">
+              <h3>PARENTS</h3>
+              <ul class="footer-links-list">
+                  <li><a href="https://www.google.com/maps/dir/22.6891486,75.867182/davv+takshila+campus/@22.6898923,75.8673051,18z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3962fcef50d20ba3:0x592abbfe7172123e!2m2!1d75.8704159!2d22.6892814" target="_blank" rel="noopener noreferrer">How to Reach</a></li>
+                  <li><a href="https://www.google.com/maps/search/nearby+hotels+in+DAVV+Takshila+campus/@22.6899046,75.8634427,16z/data=!3m1!4b1" target="_blank" rel="noopener noreferrer">Hotels in Indore</a></li>
+                  <li><a href="https://www.dauniv.ac.in" target="_blank" rel="noopener noreferrer">DAVV Official Portal</a></li>
+                  <li><a href="#contact">Contact Us</a></li>
+              </ul>
+          </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+          <div class="footer-bottom-container">
+              <p class="copyright-text">&copy; SDSF - School of Data Science and Forecasting, DAVV Indore. All Rights Reserved.</p>
+              <a href="#top" class="sdsf-back-to-top" aria-label="Back to top" title="Back to Top">
+                  <i class="fas fa-chevron-up"></i>
+              </a>
+          </div>
+      </div>
+  </footer>
+
+  <script src="research_page.js"></script>
+
+  <!--Script fot the Palcement so that it opens here -->
+                <script>
+                document.addEventListener("click", (e) => {
+                    const btn = e.target.closest(".ts-btn");
+                    if (!btn) return;
+
+                    e.preventDefault();
+
+                    const wrapper = btn.closest(".ts-wrapper");
+                    wrapper.classList.toggle("open");
+
+                    // close other dropdowns
+                    document.querySelectorAll(".ts-wrapper").forEach(w => {
+                        if (w !== wrapper) w.classList.remove("open");
+                    });
+                });
+                </script>
+
+</body>
+
+</html>

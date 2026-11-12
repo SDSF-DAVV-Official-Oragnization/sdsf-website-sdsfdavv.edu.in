@@ -1,0 +1,144 @@
+/* ==========================================================================
+   NOTICES COLUMN & RUNNING ALERT BAR
+   ========================================================================== */
+.col-notices-middle {
+    min-height: 650px;
+    border-right: 1px solid #e2e8f0;
+    padding-right: 20px;
+}
+
+/* Notices Running Alert Bar */
+.notices-running-bar {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border-radius: 0;
+    padding: 6px 0 10px 0;
+    margin-bottom: 12px;
+    overflow: hidden;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: none;
+}
+
+.running-bar-badge {
+    background: #dc2626;
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-right: 12px;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.running-bar-marquee {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+}
+
+.running-bar-content {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: noticesRunningMarquee 15s linear infinite;
+    color: #0f172a;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 0.86rem;
+    font-weight: 600;
+    will-change: transform;
+}
+
+.notices-running-bar:hover .running-bar-content {
+    animation-play-state: paused;
+}
+
+@keyframes noticesRunningMarquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.notices-ticker-item {
+    color: #0f172a;
+    transition: color 0.15s ease;
+}
+
+.running-bar-content i {
+    color: #dc2626;
+    font-size: 0.8rem;
+    margin-right: 4px;
+}
+
+.running-bar-sep {
+    color: #94a3b8;
+    font-weight: 400;
+    margin: 0 16px;
+    font-size: 0.95rem;
+}
+
+/* Official Notices List & Cards */
+.official-notices-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 6px;
+}
+
+.official-notice-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #ffffff;
+    border: 1px solid #eef2f6;
+    border-radius: 9px;
+    padding: 13px 18px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.official-notice-card:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.06);
+    transform: translateY(-1px);
+}
+
+.official-notice-card .notice-bullet {
+    color: #0b132b;
+    font-size: 1rem;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+
+.official-notice-card .notice-card-text {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #0b132b;
+    line-height: 1.45;
+    letter-spacing: -0.15px;
+    flex: 1;
+    transition: color 0.18s ease;
+}
+
+.official-notice-card:hover .notice-card-text {
+    color: #1e40af;
+}

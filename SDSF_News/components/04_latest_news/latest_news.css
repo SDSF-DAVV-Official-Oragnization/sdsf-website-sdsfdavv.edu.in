@@ -1,0 +1,142 @@
+/* ==========================================================================
+   COLUMN 1 STYLES: LATEST NEWS
+   ========================================================================== */
+.col-latest {
+    border-right: 1px solid #e2e8f0;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.card-primary-col1 {
+    background: #ffffff;
+    width:100%;
+}
+
+.card-primary-col1 .card-media {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 180px;
+}
+
+.card-primary-col1 .card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card-primary-col1:hover .card-media img {
+    transform: scale(1.03);
+}
+
+.card-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: #162b57;
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 7px;
+    border-radius: 3px;
+}
+
+.badge-academic {
+    background: #1e40af;
+}
+
+.card-primary-col1 .card-body {
+    padding-top: 10px;
+}
+
+.card-primary-col1 .card-title {
+    font-family: var(--font-headline);
+    font-size: 1.08rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 6px 0;
+}
+
+.card-primary-col1 .card-title a {
+    color: #0f172a;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.card-primary-col1 .card-title a:hover {
+    color: #1e40af;
+}
+
+.card-primary-col1 .card-snippet {
+    font-size: 0.82rem;
+    color: #475569;
+    line-height: 1.45;
+    margin: 0 0 8px 0;
+}
+
+.card-meta, .feed-meta {
+    font-size: 0.72rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+/* Feed List in Column 1 */
+.col1-feed-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feed-item {
+    border-bottom: 1px dashed #cbd5e1;
+    padding-bottom: 11px;
+    transition: transform 0.15s ease;
+}
+
+.feed-item:last-child {
+    border-bottom: none;
+}
+
+.feed-item:hover {
+    transform: translateX(3px);
+}
+
+.feed-tag {
+    display: inline-block;
+    font-size: 0.64rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-bottom: 4px;
+}
+
+.tag-hackathon { background: #fef2f2; color: #991b1b; }
+.tag-placement { background: #eff6ff; color: #1e40af; }
+.tag-research  { background: #faf5ff; color: #6b21a8; }
+.tag-campus    { background: #ecfdf5; color: #065f46; }
+
+.feed-title {
+    font-family: var(--font-headline);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 5px 0;
+}
+
+.feed-title a {
+    color: #0f172a;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.feed-title a:hover {
+    color: #dc2626;
+}

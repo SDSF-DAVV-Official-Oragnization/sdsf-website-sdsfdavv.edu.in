@@ -1,0 +1,640 @@
+/* ==========================================================================
+   SDSF ABOUT PAGE STYLESHEET (css/about.css) - COMPACT & READABLE
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.about-page {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.page-content {
+    min-height: calc(100vh - 350px);
+}
+
+/* ==========================================================================
+   Hero Section (Edge-to-Edge Spread)
+   ========================================================================== */
+.about-hero {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 32px 0;
+    border-radius: 0;
+    padding: 4rem 1.5rem;
+    overflow: hidden;
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px;
+    background-color: #0b132b;
+}
+
+.about-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.about-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(11, 19, 43, 0.84) 0%, rgba(22, 43, 87, 0.78) 50%, rgba(18, 27, 56, 0.86) 100%);
+    z-index: 2;
+}
+
+.hero-text-content {
+    position: relative;
+    z-index: 3;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(8px);
+    color: #fef08a;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+}
+
+.about-hero h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.about-hero .hero-subtitle {
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    font-weight: 500;
+    color: #f2b300;
+    margin-bottom: 0.75rem;
+    max-width: 760px;
+    line-height: 1.4;
+}
+
+.about-hero .hero-intro-text {
+    font-size: 1rem;
+    color: #e2e8f0;
+    max-width: 720px;
+    margin: 0 auto 1.4rem;
+    line-height: 1.65;
+    font-weight: 300;
+}
+
+.hero-stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.stat-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(18, 27, 56, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(6px);
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.stat-pill i {
+    color: #f2b300;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Content Container (Wide & Balanced Column)
+   ========================================================================== */
+.content-container {
+    width: 94%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 10px 50px;
+}
+
+/* ==========================================================================
+   Philosophy / Quote Section
+   ========================================================================== */
+.philosophy-section {
+    margin-bottom: 26px;
+}
+
+.quotes-module {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 5px solid #f2b300;
+    border-radius: 14px;
+    padding: 1.6rem 2.2rem;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+}
+
+.quote-icon {
+    font-size: 1.6rem;
+    color: #f2b300;
+    opacity: 0.85;
+    margin-bottom: 6px;
+}
+
+.quote-box {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: #162b57;
+    font-weight: 500;
+    line-height: 1.65;
+    max-width: 860px;
+    margin: 0 auto 12px;
+}
+
+.quote-badge {
+    display: inline-block;
+    background: #162b57;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 9999px;
+}
+
+/* ==========================================================================
+   About the School Card
+   ========================================================================== */
+.soft-background-section {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 2rem 2.4rem;
+    margin: 26px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+}
+
+.soft-background-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #162b57 0%, #2563eb 50%, #f2b300 100%);
+}
+
+.soft-bg-content {
+    position: relative;
+    z-index: 2;
+}
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #eff6ff;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 9999px;
+    margin-bottom: 10px;
+}
+
+.soft-bg-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.1rem;
+    line-height: 1.3;
+}
+
+.about_sdsf {
+    font-size: 1rem;
+    color: #334155;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.about-quote-highlight {
+    margin-top: 16px;
+    padding: 12px 18px;
+    background: #f8fafc;
+    border-left: 3px solid #2563eb;
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #0f172a;
+    font-size: 0.96rem;
+    line-height: 1.65;
+}
+
+.about-quote-highlight i {
+    color: #f2b300;
+    margin-top: 3px;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   General Info Cards Grid
+   ========================================================================== */
+.general-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 20px;
+}
+
+.info-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 1.8rem 2.2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 8px 25px rgba(22, 43, 87, 0.07);
+}
+
+.card-header-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.card-icon-box {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.intro-icon {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.vm-icon {
+    background: #fefce8;
+    color: #ca8a04;
+}
+
+.head-icon {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+.card-eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.info-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.info-card p {
+    font-size: 0.98rem;
+    color: #334155;
+    line-height: 1.75;
+}
+
+.about_introduction {
+    text-align: justify;
+}
+
+/* --- Vision & Mission Twin Cards --- */
+.vm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 8px;
+}
+
+.vm-box {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+}
+
+.vision-box {
+    border-top: 3px solid #2563eb;
+}
+
+.mission-box {
+    border-top: 3px solid #f2b300;
+}
+
+.vm-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    margin-bottom: 10px;
+}
+
+.vision-pill {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.mission-pill {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.vm-box p {
+    font-size: 0.95rem;
+    color: #334155;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* --- Head Message Spotlight Card (No Image) --- */
+.about-hod-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 30px 36px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    transition: all 0.25s ease;
+}
+
+.about-hod-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 8px 28px rgba(22, 43, 87, 0.08);
+}
+
+.hod-card-dots {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 85px;
+    height: 85px;
+    background-image: radial-gradient(#94a3b8 1.8px, transparent 1.8px);
+    background-size: 10px 10px;
+    z-index: 1;
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+.hod-card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, #162b57 0%, #2563eb 100%);
+    z-index: 1;
+}
+
+.hod-card-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.about-hod-card .spotlight-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #64748b;
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 6px;
+}
+
+.about-hod-card .spotlight-eyebrow i {
+    font-size: 0.95rem;
+    color: #2563eb;
+}
+
+.about-hod-card .spotlight-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.2px;
+}
+
+.about-hod-card .head-dark {
+    color: #162b57;
+}
+
+.about-hod-card .head-blue {
+    color: #2563eb;
+}
+
+.hod-message-body {
+    position: relative;
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 20px 24px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 18px;
+}
+
+.hod-quote-icon {
+    font-size: 1.4rem;
+    color: #2563eb;
+    opacity: 0.6;
+    margin-bottom: 8px;
+}
+
+.hod-message-body p {
+    font-size: 0.96rem;
+    line-height: 1.75;
+    color: #334155;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.hod-message-body p:last-child {
+    margin-bottom: 0;
+}
+
+.about-hod-card .spotlight-footer {
+    padding-top: 14px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.about-hod-card .faculty-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: #162b57;
+    margin-bottom: 2px;
+}
+
+.about-hod-card .faculty-role {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.about-hod-card .faculty-contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.84rem;
+    color: #475569;
+    font-family: 'Poppins', sans-serif;
+}
+
+.about-hod-card .contact-entry {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.about-hod-card .contact-entry i {
+    color: #64748b;
+    font-size: 0.8rem;
+}
+
+.about-hod-card .contact-entry a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.about-hod-card .contact-entry a:hover {
+    text-decoration: underline;
+    color: #162b57;
+}
+
+.about-hod-card .contact-divider {
+    color: #cbd5e1;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 992px) {
+    .vm-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 3rem 1.2rem;
+        min-height: auto;
+        margin-bottom: 24px;
+    }
+
+    .content-container {
+        padding: 0 14px 35px;
+    }
+
+    .quotes-module {
+        padding: 1.4rem 1.4rem;
+    }
+
+    .soft-background-section {
+        padding: 1.6rem 1.4rem;
+        margin: 18px 0;
+    }
+
+    .info-card, .about-hod-card {
+        padding: 1.4rem 1.4rem;
+    }
+
+    .about-hod-card .spotlight-heading {
+        font-size: 1.35rem;
+    }
+
+    .hod-message-body {
+        padding: 16px 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-hod-card .faculty-contact-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .about-hod-card .contact-divider {
+        display: none;
+    }
+}

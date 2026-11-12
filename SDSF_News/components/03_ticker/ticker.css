@@ -1,0 +1,76 @@
+/* ==========================================================================
+   4. BREAKING NEWS TICKER
+   ========================================================================== */
+.breaking-news-ticker-bar {
+    background: #ffffff;
+    border-bottom: 1px solid var(--news-border);
+    padding: 8px 20px;
+}
+
+.ticker-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    overflow: hidden;
+}
+
+.ticker-badge {
+    background: #dc2626;
+    color: #ffffff;
+    font-family: var(--font-subhead);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ticker-track-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+}
+
+.ticker-scroll-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: tickerLoop 20.5s linear infinite;
+}
+
+.ticker-scroll-content:hover {
+    animation-play-state: paused;
+}
+
+@keyframes tickerLoop {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.ticker-item a {
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.86rem;
+    transition: color 0.15s ease;
+}
+
+.ticker-item a:hover {
+    color: #dc2626;
+    text-decoration: underline;
+}
+
+.ticker-meta {
+    font-size: 0.76rem;
+    color: #64748b;
+    margin-left: 4px;
+}
+
+.ticker-sep {
+    color: #cbd5e1;
+    margin: 0 16px;
+}

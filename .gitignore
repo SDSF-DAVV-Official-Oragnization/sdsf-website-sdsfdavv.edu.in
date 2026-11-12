@@ -1,0 +1,111 @@
+# ==========================================
+# SDSF Official Website & Internship Portal
+# Comprehensive Git Ignore Rules
+# ==========================================
+
+# ------------------------------------------
+# Environment & Sensitive Credentials
+# ------------------------------------------
+.env
+.env.*
+*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+**/.env
+**/.env.*
+config.local.php
+db_config.php
+secrets.json
+*.pem
+*.key
+*.pfx
+*.crt
+
+# Allow example env files
+!*.env.example
+!.env.example
+!**/.env.example
+
+# ------------------------------------------
+# Vercel, Serverless & Cloud Deployments
+# ------------------------------------------
+.vercel
+.vercel/
+**/.vercel/
+.output/
+.turbo/
+.next/
+.nuxt/
+
+# ------------------------------------------
+# Dependencies & Package Managers
+# ------------------------------------------
+node_modules/
+**/node_modules/
+dist/
+build/
+vendor/
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ------------------------------------------
+# User Uploads, Data & Database Storage
+# ------------------------------------------
+uploads/
+user_uploads/
+temp_uploads/
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+*.mongodb
+
+# ------------------------------------------
+# Logs, Cache & Temporary Files
+# ------------------------------------------
+logs/
+*.log
+*.tmp
+*.temp
+.cache/
+coverage/
+.nyc_output/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# ------------------------------------------
+# IDEs & Editor Configuration
+# ------------------------------------------
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# ------------------------------------------
+# Operating System Files
+# ------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/

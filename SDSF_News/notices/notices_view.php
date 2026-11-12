@@ -1,0 +1,88 @@
+<!-- ==============================================
+     COLUMN 2 (NOTICES VIEW): NOTICES COLUMN AT THE MIDDLE
+     ============================================== -->
+<section class="grid-col col-featured col-notices-middle" id="noticesCol" style="display: none;">
+    <div class="col-section-header">
+        <h2 class="col-heading">Official Notices &amp; Circulars</h2>
+        <span class="col-header-line"></span>
+    </div>
+
+    <!-- Moving Notice Running Bar -->
+    <div class="notices-running-bar">
+        <div class="running-bar-badge">
+            <i class="fas fa-bullhorn"></i> INFO'S
+        </div>
+        <div class="running-bar-marquee">
+            <div class="running-bar-content">
+                <span class="notices-ticker-item"><strong>NEW:</strong> Final Examination Time Table (Nov&ndash;Dec 2026) updated &mdash; View in Academics</span><span class="running-bar-sep">/</span><span class="notices-ticker-item">All notifications, exam schedules &amp; circulars are available below as official PDFs</span>
+                <span class="running-bar-sep">/</span>
+                <span class="notices-ticker-item">Official notices are hereby updated for student &amp; faculty information</span>
+                <span class="running-bar-sep">/</span>
+                <!-- Duplicate sequence for seamless loop -->
+                <span class="notices-ticker-item"><strong>NEW:</strong> Final Examination Time Table (Nov&ndash;Dec 2026) updated &mdash; View in Academics</span><span class="running-bar-sep">/</span><span class="notices-ticker-item">All notifications, exam schedules &amp; circulars are available below as official PDFs</span>
+                <span class="running-bar-sep">/</span>
+                <span class="notices-ticker-item">Official notices are hereby updated for student &amp; faculty information</span>
+                <span class="running-bar-sep">/</span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--All the Offcial Notices DISPLAY are here with -->
+    
+    <div class="official-notices-list">
+        <a href="<?php echo $base_path; ?>academics.php#exam-timetable" class="official-notice-card" style="border-left: 4px solid #2563eb; background: #f0f7ff;">
+            <span class="notice-bullet" style="color: #2563eb; font-weight: bold;">&bull;</span>
+            <span class="notice-card-text">
+                <strong style="color: #1e3a8a;">Final Examination Time Table (Semester End Examination Nov&ndash;Dec 2026)</strong>
+                <span style="display: inline-block; background: #2563eb; color: #ffffff; font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-left: 8px; letter-spacing: 0.5px;">UPDATED</span>
+            </span>
+        </a>
+        <a href="<?php echo $base_path; ?>notices_pdfs/Ph.D.-Course-Work-Time-Table-2026.pdf" target="_blank" rel="noopener noreferrer" class="official-notice-card">
+            <span class="notice-bullet">&bull;</span>
+            <span class="notice-card-text">Ph.D. Course Work Time Table (Under Faculty of Engineering) (Session August- November, 2026)</span>
+        </a>
+
+        <a href="<?php echo $base_path; ?>notices_pdfs/08-21-2026_0405pm87036.pdf" target="_blank" rel="noopener noreferrer" class="official-notice-card">
+            <span class="notice-bullet">&bull;</span>
+            <span class="notice-card-text">Direct Admission for M.Tech. (Executive), M.Sc. (Data Science &amp; Analytics) and M.Tech. (Business Data Analytics) on Merit Basis</span>
+        </a>
+
+        <a href="<?php echo $base_path; ?>notices_pdfs/Anti-Raggin-Committee-Members-2026.pdf" target="_blank" rel="noopener noreferrer" class="official-notice-card">
+            <span class="notice-bullet">&bull;</span>
+            <span class="notice-card-text">Various Committee Members - 2026</span>
+        </a>
+
+        <a href="<?php echo $base_path; ?>notices_pdfs/Ph.D.Vivo-Voce-Ms-Priyanka-Gupta.pdf" target="_blank" rel="noopener noreferrer" class="official-notice-card">
+            <span class="notice-bullet">&bull;</span>
+            <span class="notice-card-text">Notice Regarding Final Ph.D. Vivo Voce Ms. Priyanka Gupta Dated: 24.08.2026</span>
+        </a>
+
+        <a href="https://www.dauniv.ac.in/notice-multiple-details/NDQ1OA==" target="_blank" rel="noopener noreferrer" class="official-notice-card">
+            <span class="notice-bullet">&bull;</span>
+            <span class="notice-card-text">Notice for College Level Counseling CUET (PG) 2026</span>
+        </a>
+
+        <a href="<?php echo $base_path; ?>notices_pdfs/RAC-Data-Science-June-2026.pdf" target="_blank" rel="noopener noreferrer" class="official-notice-card">
+            <span class="notice-bullet">&bull;</span>
+            <span class="notice-card-text">Notice for RAC (Interview) for Admission in Ph.D.(Data Science)</span>
+        </a>
+
+        <a href="<?php echo $base_path; ?>notices_pdfs/Second Round Admission of M.Tech. (Data Science) M.Tech. (Data Science) For Working Executive Batch-(2026-2028).pdf" target="_blank" rel="noopener noreferrer" class="official-notice-card">
+            <span class="notice-bullet">&bull;</span>
+            <span class="notice-card-text">Second Round Admission of M.Tech. (Data Science)/M.Tech. (Data Science) For Working Executive Batch-(2026-2028)</span>
+        </a>
+
+        <a href="<?php echo $base_path; ?>notices_pdfs/Second Round Admission of M.Sc. (Data Science and Analytics).pdf" target="_blank" rel="noopener noreferrer" class="official-notice-card">
+            <span class="notice-bullet">&bull;</span>
+            <span class="notice-card-text">Second Round Admission of M.Sc. (Data Science and Analytics) at School of Data Science and Forecasting</span>
+        </a>
+
+        <a href="<?php echo $base_path; ?>admission.php" target="_blank" rel="noopener noreferrer" class="official-notice-card">
+            <span class="notice-bullet">&bull;</span>
+            <span class="notice-card-text">Admission 2026</span>
+        </a>
+    </div>
+</section>
