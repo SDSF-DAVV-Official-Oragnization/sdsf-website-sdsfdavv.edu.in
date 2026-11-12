@@ -1,25 +1,31 @@
 <?php
+// Display errors in logs and output to help debugging
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 // Prevent path traversal and decode request
 $uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 $uri = rawurldecode($uri);
 
-$rootDir = realpath(__DIR__ . '/..');
+// In Vercel serverless environment, parent directory contains all project files
+$rootDir = dirname(__DIR__);
 
 // Normalize root path
 if ($uri === '/' || $uri === '' || $uri === '/index.php') {
     $target = $rootDir . DIRECTORY_SEPARATOR . 'index.php';
     if (file_exists($target)) {
-        chdir(dirname($target));
+        chdir($rootDir);
         require $target;
         exit;
     }
 }
 
 $path = ltrim($uri, '/');
-$target = realpath($rootDir . DIRECTORY_SEPARATOR . $path);
+$target = $rootDir . DIRECTORY_SEPARATOR . str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $path);
 
 // Check if exact file exists
-if ($target && strpos($target, $rootDir) === 0 && is_file($target)) {
+if (file_exists($target) && is_file($target)) {
     $ext = strtolower(pathinfo($target, PATHINFO_EXTENSION));
     if ($ext === 'php') {
         chdir(dirname($target));
@@ -54,16 +60,16 @@ if ($target && strpos($target, $rootDir) === 0 && is_file($target)) {
 }
 
 // Check with .php extension appended (e.g. /about -> /about.php)
-$phpTarget = realpath($rootDir . DIRECTORY_SEPARATOR . $path . '.php');
-if ($phpTarget && strpos($phpTarget, $rootDir) === 0 && is_file($phpTarget)) {
+$phpTarget = $rootDir . DIRECTORY_SEPARATOR . str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $path) . '.php';
+if (file_exists($phpTarget) && is_file($phpTarget)) {
     chdir(dirname($phpTarget));
     require $phpTarget;
     exit;
 }
 
 // Check if directory with index.php
-$dirTarget = realpath($rootDir . DIRECTORY_SEPARATOR . $path . DIRECTORY_SEPARATOR . 'index.php');
-if ($dirTarget && strpos($dirTarget, $rootDir) === 0 && is_file($dirTarget)) {
+$dirTarget = $rootDir . DIRECTORY_SEPARATOR . str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $path) . DIRECTORY_SEPARATOR . 'index.php';
+if (file_exists($dirTarget) && is_file($dirTarget)) {
     chdir(dirname($dirTarget));
     require $dirTarget;
     exit;
