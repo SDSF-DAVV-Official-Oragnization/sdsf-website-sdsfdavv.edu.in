@@ -1,22 +1,9 @@
 {
-  "version": 2,
-  "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.6.1"
-    }
-  },
-  "routes": [
+  "cleanUrls": true,
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|pdf|woff|woff2|ttf|eot|webp|mp4))",
-      "dest": "/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.php"
+      "source": "/(.*)\\.php",
+      "destination": "/$1.html"
     }
   ]
 }
